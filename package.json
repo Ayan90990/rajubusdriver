@@ -1,0 +1,12 @@
+{
+  "name": "busdriver-clone",
+  "version": "1.0.0",
+  "description": "MERN stack clone of busdriver.wtf — Nostalgic 80s & 90s Hindi Songs Player",
+  "scripts": {
+    "install:all": "cd server && npm install && cd ../client && npm install",
+    "dev:server": "cd server && npm run dev",
+    "dev:client": "cd client && npm start",
+    "seed": "cd server && node seed.js",
+    "build": "cd client && npm run build"
+  }
+}
