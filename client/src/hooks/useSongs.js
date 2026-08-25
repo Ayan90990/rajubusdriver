@@ -7,8 +7,9 @@ export function useSongs() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    const apiBase = process.env.REACT_APP_API_URL || '';
     axios
-      .get('/api/songs')
+      .get(`${apiBase}/api/songs`)
       .then((res) => {
         setSongs(res.data.data || FALLBACK_SONGS);
         setLoading(false);

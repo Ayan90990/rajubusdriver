@@ -97,8 +97,9 @@ export default function App() {
   // Live Real-Time Passengers (ABOARD) Tracking
   useEffect(() => {
     let es;
+    const apiBase = process.env.REACT_APP_API_URL || 'http://localhost:5000';
     try {
-      es = new EventSource('http://localhost:5000/api/aboard/stream');
+      es = new EventSource(`${apiBase}/api/aboard/stream`);
       es.onmessage = (e) => {
         try {
           const data = JSON.parse(e.data);
@@ -109,7 +110,7 @@ export default function App() {
       };
       es.onerror = () => {
         // Fallback polling if disconnected
-        fetch('http://localhost:5000/api/aboard')
+        fetch(`${apiBase}/api/aboard`)
           .then(res => res.json())
           .then(data => {
             if (data && typeof data.aboard === 'number') {
