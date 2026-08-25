@@ -985,10 +985,22 @@ body {
   50%      { box-shadow: 0 0 0 14px rgba(255,255,255,0.18), 0 0 0 28px rgba(255,255,255,0.08); }
 }
 
-/* ─── Responsive ─── */
+/* ─── Device-Specific Adaptive Responsive System ─── */
+
+/* ── 1. TABLET VIEW (601px to 900px) ── */
+@media (min-width: 601px) and (max-width: 900px) {
+  .hero-title { font-size: clamp(2rem, 5.5vw, 3rem) !important; }
+  .top-bar { padding: 10px 18px 0; }
+  .player-pill { width: calc(100vw - 32px); padding: 8px 14px; }
+  .bus-scene { top: 48%; padding: 0 16px; gap: 10px; }
+  .shayri-board { bottom: 95px; width: calc(100vw - 32px); }
+  .player-bar { padding: 0 0 12px; }
+}
+
+/* ── 2. MOBILE PHONE VIEW (381px to 600px) ── */
 @media (max-width: 600px) {
   .hero-center { padding-top: 4px; }
-  .hero-title { font-size: clamp(1.6rem, 7vw, 2.3rem) !important; line-height: 1.1; }
+  .hero-title { font-size: clamp(1.5rem, 6.5vw, 2.1rem) !important; line-height: 1.1; }
   .track-count-label { font-size: 0.55rem; letter-spacing: 1.5px; margin-bottom: 2px; }
   .hero-play-prompt { padding: 6px 14px !important; font-size: 0.78rem !important; margin-top: 6px !important; }
   .center-controls { gap: 6px; padding: 0 8px; }
@@ -1001,7 +1013,7 @@ body {
   .aboard-row { font-size: 0.6rem; }
   .who-driving { font-size: 0.6rem; }
 
-  .bus-scene { top: 45%; padding: 0 8px; gap: 6px; }
+  .bus-scene { top: 44%; padding: 0 8px; gap: 6px; }
   .horn-badge { padding: 4px 8px; }
   .horn-icon { font-size: 1.1rem; }
   .horn-hindi { font-size: 0.62rem; }
@@ -1016,7 +1028,7 @@ body {
   .shayri-en { font-size: 0.58rem; }
 
   .player-bar { padding: 0 0 calc(env(safe-area-inset-bottom, 6px) + 6px); }
-  .player-pill { width: calc(100vw - 16px); padding: 6px 10px; gap: 4px; border-radius: 40px; }
+  .player-pill { width: calc(100vw - 14px); padding: 6px 10px; gap: 4px; border-radius: 40px; }
   .pill-art { width: 44px; height: 44px; }
   .pill-title { font-size: 0.82rem; }
   .pill-artist { font-size: 0.68rem; }
@@ -1024,6 +1036,22 @@ body {
   .ctrl-play { width: 34px; height: 34px; font-size: 1rem; }
   .bus-progress-wrap { height: 14px; }
   .time-label { font-size: 0.62rem; }
+}
+
+/* ── 3. SMALL MOBILE VIEW (<= 380px) ── */
+@media (max-width: 380px) {
+  .hero-title { font-size: 1.35rem !important; }
+  .top-title-small span:first-child { font-size: 0.75rem; }
+  .top-title-small span:last-child { font-size: 0.42rem; }
+  .clock { font-size: 0.95rem; }
+  .bus-scene { top: 43%; gap: 4px; }
+  .horn-eng, .light-btn-eng { display: none; }
+  .shayri-board { bottom: 78px; padding: 3px 6px; }
+  .shayri-hi { font-size: 0.68rem; }
+  .shayri-en { font-size: 0.52rem; }
+  .player-pill { padding: 4px 8px; }
+  .pill-art { width: 38px; height: 38px; }
+  .pill-title { font-size: 0.75rem; }
 }
 
 /* ─── Download Modal ─── */
