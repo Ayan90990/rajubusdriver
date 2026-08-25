@@ -19,6 +19,7 @@ body {
   color: var(--text);
   overflow: hidden;
   height: 100vh;
+  height: 100dvh;
   width: 100vw;
 }
 
@@ -27,6 +28,7 @@ body {
   position: relative;
   width: 100vw;
   height: 100vh;
+  height: 100dvh;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -985,13 +987,27 @@ body {
 
 /* ─── Responsive ─── */
 @media (max-width: 600px) {
-  .hero-title { font-size: clamp(3rem, 18vw, 5rem); }
-  .center-controls { gap: 12px; padding: 0 16px; }
+  .hero-title { font-size: clamp(1.8rem, 8vw, 2.6rem) !important; line-height: 1.1; }
+  .track-count-label { font-size: 0.55rem; letter-spacing: 1.5px; }
+  .center-controls { gap: 8px; padding: 0 10px; }
   .kbd-hints { display: none; }
-  .vol-slider { width: 50px; }
-  .top-bar { padding: 10px 14px 0; }
-  .player-bar { padding: 8px 14px 8px; }
-  .bus-scene { bottom: 120px; }
+  .vol-slider { width: 45px; }
+  .top-bar { padding: 8px 12px 0; }
+  .top-title-small span:first-child { font-size: 0.85rem; }
+  .top-title-small span:last-child { font-size: 0.5rem; letter-spacing: 1.5px; }
+  .clock { font-size: 1.2rem; }
+  .player-bar { padding: 6px 10px 10px; }
+  .player-pill { padding: 8px 12px; gap: 6px; }
+  .bus-scene { top: 48%; padding: 0 12px; gap: 8px; }
+  .horn-badge { padding: 5px 8px; }
+  .horn-hindi { font-size: 0.65rem; }
+  .horn-eng { font-size: 0.48rem; }
+  .light-btn { padding: 5px 8px; }
+  .light-btn-text span:first-child { font-size: 0.65rem; }
+  .light-btn-text span:last-child { font-size: 0.48rem; }
+  .shayri-board { bottom: 105px; max-width: calc(100vw - 20px); padding: 5px 10px; }
+  .shayri-hi { font-size: 0.75rem; }
+  .shayri-en { font-size: 0.6rem; }
 }
 
 /* ─── Download Modal ─── */
