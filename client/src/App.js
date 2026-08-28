@@ -969,20 +969,6 @@ export default function App() {
         </div>
       )}
 
-      {/* Start overlay */}
-      {!hasStarted && (
-        <div
-          className="start-overlay"
-          onClick={handlePlayPause}
-          role="button"
-          tabIndex={0}
-          onKeyDown={e => e.key === 'Enter' && handlePlayPause()}
-          aria-label="Click to start playing"
-        >
-          <div className="start-play-btn" aria-hidden="true">▶</div>
-        </div>
-      )}
     </div>
   );
 }
-

@@ -953,40 +953,8 @@ body {
 }
 
 /* ─── Start overlay ─── */
-.start-overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 50;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(20,10,0,0.5);
-  cursor: pointer;
-  backdrop-filter: blur(2px);
-}
-
-.start-play-btn {
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.95);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.8rem;
-  color: #000;
-  box-shadow: 0 0 0 12px rgba(255,255,255,0.12), 0 0 0 24px rgba(255,255,255,0.06);
-  animation: startPulse 2s ease-in-out infinite;
-  padding-left: 5px;
-}
-
-@keyframes startPulse {
-  0%,100% { box-shadow: 0 0 0 8px rgba(255,255,255,0.12), 0 0 0 18px rgba(255,255,255,0.05); }
-  50%      { box-shadow: 0 0 0 14px rgba(255,255,255,0.18), 0 0 0 28px rgba(255,255,255,0.08); }
-}
 
 /* ─── Device-Specific Adaptive Responsive System ─── */
-
 /* ── 1. TABLET VIEW (601px to 900px) ── */
 @media (min-width: 601px) and (max-width: 900px) {
   .hero-title { font-size: clamp(2rem, 5.5vw, 3rem) !important; }
@@ -1012,21 +980,17 @@ body {
   .clock { font-size: 1.1rem; }
   .aboard-row { font-size: 0.6rem; }
   .who-driving { font-size: 0.6rem; }
-
   .bus-scene { top: 44%; padding: 0 8px; gap: 6px; }
   .horn-badge { padding: 4px 8px; }
   .horn-icon { font-size: 1.1rem; }
   .horn-hindi { font-size: 0.62rem; }
   .horn-eng { font-size: 0.45rem; }
-
   .light-btn { padding: 4px 8px; }
   .light-btn-text span:first-child { font-size: 0.62rem; }
   .light-btn-text span:last-child { font-size: 0.45rem; }
-
   .shayri-board { bottom: 85px; width: calc(100vw - 16px); padding: 4px 8px; }
   .shayri-hi { font-size: 0.72rem; }
   .shayri-en { font-size: 0.58rem; }
-
   .player-bar { padding: 0 0 calc(env(safe-area-inset-bottom, 6px) + 6px); }
   .player-pill { width: calc(100vw - 14px); padding: 6px 10px; gap: 4px; border-radius: 40px; }
   .pill-art { width: 44px; height: 44px; }
@@ -1462,6 +1426,4 @@ body {
   from { opacity: 0; transform: scale(0.92); }
   to { opacity: 1; transform: scale(1); }
 }
-
-
 
