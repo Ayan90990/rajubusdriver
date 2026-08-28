@@ -506,7 +506,9 @@ body {
 
 /* ── The actual pill card ── */
 .player-pill {
-  width: min(780px, calc(100vw - 32px));
+  width: min(510.4px, calc(100vw - 32px));
+  height: 247.6px;
+  box-sizing: border-box;
   background: rgba(28, 16, 4, 0.93);
   backdrop-filter: blur(28px);
   -webkit-backdrop-filter: blur(28px);
@@ -992,7 +994,7 @@ body {
   .shayri-hi { font-size: 0.72rem; }
   .shayri-en { font-size: 0.58rem; }
   .player-bar { padding: 0 0 calc(env(safe-area-inset-bottom, 6px) + 6px); }
-  .player-pill { width: calc(100vw - 14px); padding: 6px 10px; gap: 4px; border-radius: 40px; }
+  .player-pill { width: calc(100vw - 14px); height: auto; padding: 6px 10px; gap: 4px; border-radius: 40px; }
   .pill-art { width: 44px; height: 44px; }
   .pill-title { font-size: 0.82rem; }
   .pill-artist { font-size: 0.68rem; }
@@ -1426,4 +1428,3 @@ body {
   from { opacity: 0; transform: scale(0.92); }
   to { opacity: 1; transform: scale(1); }
 }
-
