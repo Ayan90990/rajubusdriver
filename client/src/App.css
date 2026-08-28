@@ -1428,3 +1428,66 @@ body {
   from { opacity: 0; transform: scale(0.92); }
   to { opacity: 1; transform: scale(1); }
 }
+
+/* Home-screen install prompt */
+.install-prompt {
+  position: fixed;
+  left: 50%;
+  bottom: max(16px, env(safe-area-inset-bottom));
+  z-index: 150;
+  width: min(432px, calc(100vw - 24px));
+  min-height: 84px;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  background: #291407;
+  border: 1px solid rgba(255, 196, 51, 0.2);
+  border-radius: 14px;
+  box-shadow: 0 14px 38px rgba(0, 0, 0, 0.48);
+  animation: installPromptIn 0.35s ease-out;
+}
+
+.install-prompt-icon {
+  width: 44px;
+  height: 44px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+}
+
+.install-prompt-copy {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.install-prompt-copy strong { color: #fff; font-size: 0.95rem; }
+.install-prompt-copy span { color: rgba(255,255,255,0.62); font-size: 0.74rem; margin-top: 4px; }
+
+.install-prompt-add {
+  border: 0;
+  border-radius: 24px;
+  padding: 10px 17px;
+  background: #fff;
+  color: #231105;
+  font: 700 0.9rem 'Baloo 2', sans-serif;
+  cursor: pointer;
+}
+
+.install-prompt-close {
+  border: 0;
+  padding: 4px;
+  background: transparent;
+  color: rgba(255,255,255,0.45);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+@keyframes installPromptIn {
+  from { opacity: 0; transform: translate(-50%, 18px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}

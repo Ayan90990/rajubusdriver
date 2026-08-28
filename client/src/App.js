@@ -93,6 +93,30 @@ export default function App() {
   const [showDriver, setShowDriver] = useState(false);
   const [aboard, setAboard] = useState(1);
   const [songError, setSongError] = useState(null);
+  const [deferredInstallPrompt, setDeferredInstallPrompt] = useState(null);
+  const [showInstallPrompt, setShowInstallPrompt] = useState(false);
+
+  useEffect(() => {
+    const handleBeforeInstallPrompt = (event) => {
+      event.preventDefault();
+      const dismissed = window.localStorage.getItem('installPromptDismissed');
+      if (window.matchMedia('(max-width: 700px)').matches && !dismissed) {
+        setDeferredInstallPrompt(event);
+        setShowInstallPrompt(true);
+      }
+    };
+    const handleAppInstalled = () => {
+      setDeferredInstallPrompt(null);
+      setShowInstallPrompt(false);
+    };
+
+    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    window.addEventListener('appinstalled', handleAppInstalled);
+    return () => {
+      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+      window.removeEventListener('appinstalled', handleAppInstalled);
+    };
+  }, []);
 
   // Live Real-Time Passengers (ABOARD) Tracking
   useEffect(() => {
@@ -391,6 +415,19 @@ export default function App() {
     const v = Number(e.target.value);
     setVolume(v);
     setIsMuted(v === 0);
+  };
+
+  const installApp = async () => {
+    if (!deferredInstallPrompt) return;
+    await deferredInstallPrompt.prompt();
+    await deferredInstallPrompt.userChoice;
+    setDeferredInstallPrompt(null);
+    setShowInstallPrompt(false);
+  };
+
+  const dismissInstallPrompt = () => {
+    window.localStorage.setItem('installPromptDismissed', 'true');
+    setShowInstallPrompt(false);
   };
 
   const progress = duration > 0 ? (currentTime / duration) * 100 : 0;
@@ -967,6 +1004,18 @@ export default function App() {
             </div>
           </div>
         </div>
+      )}
+
+      {showInstallPrompt && (
+        <aside className="install-prompt" aria-label="Add Raju Bus Driver to your home screen">
+          <img className="install-prompt-icon" src="/favicon.png" alt="Raju Bus Driver" />
+          <div className="install-prompt-copy">
+            <strong>Bus ko home screen par rakhein</strong>
+            <span>Ek tap, bina app store ke</span>
+          </div>
+          <button className="install-prompt-add" onClick={installApp}>Add</button>
+          <button className="install-prompt-close" onClick={dismissInstallPrompt} aria-label="Close install prompt">×</button>
+        </aside>
       )}
 
     </div>
