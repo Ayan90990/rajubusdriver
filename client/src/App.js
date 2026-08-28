@@ -97,10 +97,15 @@ export default function App() {
   const [showInstallPrompt, setShowInstallPrompt] = useState(false);
 
   useEffect(() => {
+    const dismissed = window.localStorage.getItem('installPromptDismissed');
+    const isMobile = window.matchMedia('(max-width: 700px)').matches;
+    if (isMobile && !dismissed) {
+      setShowInstallPrompt(true);
+    }
+
     const handleBeforeInstallPrompt = (event) => {
       event.preventDefault();
-      const dismissed = window.localStorage.getItem('installPromptDismissed');
-      if (window.matchMedia('(max-width: 700px)').matches && !dismissed) {
+      if (isMobile && !dismissed) {
         setDeferredInstallPrompt(event);
         setShowInstallPrompt(true);
       }
@@ -418,7 +423,10 @@ export default function App() {
   };
 
   const installApp = async () => {
-    if (!deferredInstallPrompt) return;
+    if (!deferredInstallPrompt) {
+      window.alert('Chrome ke menu (⋮) me “Add to Home screen” select karein.');
+      return;
+    }
     await deferredInstallPrompt.prompt();
     await deferredInstallPrompt.userChoice;
     setDeferredInstallPrompt(null);
