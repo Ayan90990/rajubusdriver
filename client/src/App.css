@@ -1016,22 +1016,30 @@ body {
   .kbd-hints { display: none; }
   .vol-slider { width: 40px; }
   .top-bar { padding: 6px 10px 0; }
+  .top-left { gap: 7px; }
+  .top-right { gap: 3px; }
+  .bus-badge { width: 30px; height: 30px; font-size: 0.95rem; }
   .top-title-small span:first-child { font-size: 0.82rem; }
   .top-title-small span:last-child { font-size: 0.48rem; letter-spacing: 1.2px; }
-  .clock { font-size: 1.1rem; }
+  .clock { font-size: 1rem; }
   .aboard-row { font-size: 0.6rem; }
-  .who-driving { font-size: 0.6rem; }
+  .who-driving { gap: 4px; font-size: 0.56rem; }
+  .driver-avatar { width: 23px; height: 23px; font-size: 0.8rem; }
   .bus-scene { top: 44%; padding: 0 8px; gap: 6px; }
-  .horn-badge { padding: 4px 8px; }
-  .horn-icon { font-size: 1.1rem; }
-  .horn-hindi { font-size: 0.62rem; }
-  .horn-eng { font-size: 0.45rem; }
-  .light-btn { padding: 4px 8px; }
-  .light-btn-text span:first-child { font-size: 0.62rem; }
-  .light-btn-text span:last-child { font-size: 0.45rem; }
-  .shayri-board { bottom: 85px; width: calc(100vw - 16px); padding: 4px 8px; }
-  .shayri-hi { font-size: 0.72rem; }
-  .shayri-en { font-size: 0.58rem; }
+  .horn-badge { padding: 4px 7px; gap: 6px; border-radius: 19px; }
+  .horn-badge .horn-icon { font-size: 0.92rem; }
+  .horn-badge .horn-hindi { font-size: 0.58rem; }
+  .horn-badge .horn-eng { font-size: 0.5rem; letter-spacing: 1.1px; }
+  .light-btn { padding: 4px 7px; gap: 6px; border-radius: 19px; }
+  .light-bulb-icon { font-size: 0.9rem; }
+  .light-btn-text span:first-child { font-size: 0.58rem; }
+  .light-btn-text span:last-child { font-size: 0.5rem; }
+  .shayri-board { bottom: 85px; width: calc(100vw - 24px); padding: 5px 10px; gap: 6px; border-width: 1.5px; }
+  .shayri-content { gap: 6px; }
+  .shayri-deco { font-size: 1.2rem; }
+  .shayri-hi { font-size: 0.7rem; }
+  .shayri-en { font-size: 0.55rem; }
+  .shayri-refresh { width: 26px; height: 26px; font-size: 0.78rem; }
   .player-bar { padding: 0 0 calc(env(safe-area-inset-bottom, 6px) + 6px); }
   .player-pill { width: min(672px, calc(100vw - 14px)); height: 97.6px; padding: 6px 10px; gap: 4px; border-radius: 40px; }
   .pill-art { width: 32px; height: 32px; }
