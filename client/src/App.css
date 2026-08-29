@@ -959,7 +959,18 @@ body {
 /* ─── Device-Specific Adaptive Responsive System ─── */
 /* ── 1. TABLET VIEW (601px to 900px) ── */
 @media (min-width: 601px) and (max-width: 900px) {
-  .scene-bg-img { object-fit: fill; object-position: center center; }
+  .scene-bg-img {
+    inset: auto;
+    top: 54%;
+    left: 50%;
+    width: 125vw;
+    height: auto;
+    aspect-ratio: 1280 / 550;
+    max-width: none;
+    transform: translate(-50%, -50%);
+    object-fit: contain;
+    object-position: center;
+  }
   .hero-title { font-size: clamp(2rem, 5.5vw, 3rem) !important; }
   .top-bar { padding: 10px 18px 0; }
   .player-pill { width: calc(100vw - 32px); padding: 8px 14px; }
@@ -970,11 +981,33 @@ body {
 
 /* ── 2. MOBILE PHONE VIEW (381px to 600px) ── */
 @media (min-width: 901px) and (max-width: 1200px) {
-  .scene-bg-img { object-fit: fill; object-position: center center; }
+  .scene-bg-img {
+    inset: auto;
+    top: 54%;
+    left: 50%;
+    width: 115vw;
+    height: auto;
+    aspect-ratio: 1280 / 550;
+    max-width: none;
+    transform: translate(-50%, -50%);
+    object-fit: contain;
+    object-position: center;
+  }
 }
 
 @media (max-width: 600px) {
-  .scene-bg-img { object-fit: fill; object-position: center center; }
+  .scene-bg-img {
+    inset: auto;
+    top: 55%;
+    left: 50%;
+    width: 160vw;
+    height: auto;
+    aspect-ratio: 1280 / 550;
+    max-width: none;
+    transform: translate(-50%, -50%);
+    object-fit: contain;
+    object-position: center;
+  }
   .hero-center { padding-top: 4px; }
   .hero-title { font-size: clamp(1.5rem, 6.5vw, 2.1rem) !important; line-height: 1.1; }
   .track-count-label { font-size: 0.55rem; letter-spacing: 1.5px; margin-bottom: 2px; }
