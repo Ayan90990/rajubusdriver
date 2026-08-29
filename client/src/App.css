@@ -995,17 +995,19 @@ body {
   .shayri-en { font-size: 0.58rem; }
   .player-bar { padding: 0 0 calc(env(safe-area-inset-bottom, 6px) + 6px); }
   .player-pill { width: min(672px, calc(100vw - 14px)); height: 97.6px; padding: 6px 10px; gap: 4px; border-radius: 40px; }
-  .pill-art { width: 38px; height: 38px; }
-  .pill-info { padding: 0 7px; }
-  .pill-title { font-size: 0.75rem; }
-  .pill-artist { font-size: 0.6rem; }
-  .pill-controls { gap: 1px; }
-  .pill-controls .pc { width: 27px; height: 27px; }
-  .pill-controls .pc.pc-play { width: 34px; height: 34px; }
-  .pill-controls .pc:nth-of-type(n + 5),
-  .pill-controls .vol-slider { display: none; }
-  .pill-progress { gap: 7px; padding: 2px 3px; }
-  .p-time { min-width: 27px; font-size: 0.62rem; }
+  .pill-art { width: 32px; height: 32px; }
+  .pill-info { padding: 0 4px; }
+  .pill-title { font-size: 0.62rem; }
+  .pill-artist { font-size: 0.52rem; }
+  .pill-controls { gap: 0; }
+  .pill-controls .pc { width: 21px; height: 21px; }
+  .pill-controls .pc.pc-play { width: 27px; height: 27px; }
+  .pill-controls .pc svg { width: 13px; height: 13px; }
+  .pill-controls .pc.pc-play svg { width: 12px; height: 12px; }
+  .pill-controls .pc:nth-of-type(n + 5) { display: flex; }
+  .pill-controls .vol-slider { display: block; width: 24px; }
+  .pill-progress { gap: 5px; padding: 2px 3px; }
+  .p-time { min-width: 24px; font-size: 0.55rem; }
   .bus-progress-wrap { height: 14px; }
   .time-label { font-size: 0.62rem; }
 }
@@ -1022,7 +1024,7 @@ body {
   .shayri-hi { font-size: 0.68rem; }
   .shayri-en { font-size: 0.52rem; }
   .player-pill { padding: 4px 8px; }
-  .pill-art { width: 38px; height: 38px; }
+  .pill-art { width: 32px; height: 32px; }
   .pill-title { font-size: 0.75rem; }
 }
 
