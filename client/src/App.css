@@ -1599,9 +1599,10 @@ body {
   inset: 0;
   z-index: 0;
   overflow: hidden;
-  background:
-    radial-gradient(ellipse at 50% -8%, rgba(255,196,115,0.32) 0%, rgba(255,121,170,0.13) 30%, transparent 58%),
-    linear-gradient(118deg, #18040d 0%, #511531 46%, #210714 100%);
+  background-color: #1d0710;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
   transition: filter 0.8s ease;
 }
 
@@ -1609,109 +1610,7 @@ body {
   content: '';
   position: absolute;
   inset: 0;
-  opacity: 0.42;
-  background:
-    repeating-linear-gradient(90deg, transparent 0 78px, rgba(255,209,134,0.06) 79px 81px, transparent 82px 156px),
-    linear-gradient(to bottom, rgba(0,0,0,0.08) 0%, transparent 34%, rgba(8,0,4,0.42) 100%);
-}
-
-.salon-bulbs {
-  position: absolute;
-  top: 8%;
-  left: 50%;
-  width: min(800px, 88vw);
-  height: min(440px, 48vh);
-  transform: translateX(-50%);
-  background:
-    radial-gradient(circle at 4% 8%, #fff9d1 0 3px, #ffc45c 4px 7px, transparent 9px),
-    radial-gradient(circle at 18% 2%, #fff9d1 0 3px, #ffc45c 4px 7px, transparent 9px),
-    radial-gradient(circle at 36% 0%, #fff9d1 0 3px, #ffc45c 4px 7px, transparent 9px),
-    radial-gradient(circle at 54% 0%, #fff9d1 0 3px, #ffc45c 4px 7px, transparent 9px),
-    radial-gradient(circle at 72% 2%, #fff9d1 0 3px, #ffc45c 4px 7px, transparent 9px),
-    radial-gradient(circle at 96% 8%, #fff9d1 0 3px, #ffc45c 4px 7px, transparent 9px),
-    radial-gradient(circle at 2% 52%, #fff9d1 0 3px, #ffc45c 4px 7px, transparent 9px),
-    radial-gradient(circle at 98% 52%, #fff9d1 0 3px, #ffc45c 4px 7px, transparent 9px);
-  filter: drop-shadow(0 0 12px rgba(255,196,90,0.72));
-  animation: salonBulbs 2.8s ease-in-out infinite alternate;
-}
-
-.salon-mirror {
-  position: absolute;
-  top: 13%;
-  left: 50%;
-  width: min(690px, 76vw);
-  height: min(390px, 43vh);
-  transform: translateX(-50%);
-  border: 12px solid #b65d62;
-  border-bottom-color: #6c283e;
-  border-radius: 48% 48% 14% 14% / 38% 38% 9% 9%;
-  background:
-    linear-gradient(128deg, rgba(255,255,255,0.23) 0 13%, transparent 14% 43%, rgba(255,255,255,0.06) 44% 52%, transparent 53%),
-    radial-gradient(ellipse at 50% 34%, rgba(255,195,226,0.40), rgba(99,26,74,0.62) 54%, rgba(29,6,21,0.86) 100%);
-  box-shadow:
-    0 0 0 4px rgba(255,208,107,0.22),
-    0 0 42px rgba(255,69,143,0.35),
-    inset 0 0 45px rgba(0,0,0,0.40);
-}
-
-.salon-pole {
-  position: absolute;
-  top: 34%;
-  left: clamp(18px, 8vw, 110px);
-  width: 28px;
-  height: 180px;
-  border: 4px solid #f5d59b;
-  border-radius: 18px;
-  background: repeating-linear-gradient(135deg, #e63d62 0 14px, #fff3d5 14px 28px, #3d80b9 28px 42px, #fff3d5 42px 56px);
-  box-shadow: 0 0 20px rgba(255,190,126,0.48);
-}
-
-.salon-chair {
-  position: absolute;
-  left: 50%;
-  bottom: 13%;
-  width: min(270px, 45vw);
-  height: 146px;
-  transform: translateX(-50%);
-  border: 8px solid #ec7aa1;
-  border-bottom: 18px solid #d7b088;
-  border-radius: 32px 32px 20px 20px;
-  background:
-    linear-gradient(to bottom, transparent 0 38%, rgba(36,5,22,0.88) 39% 100%),
-    linear-gradient(105deg, #8d183f, #f06b9c 48%, #6c1232);
-  box-shadow: 0 18px 26px rgba(0,0,0,0.45), inset 0 0 22px rgba(255,223,236,0.18);
-}
-
-.salon-chair::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  bottom: -68px;
-  width: 18px;
-  height: 68px;
-  transform: translateX(-50%);
-  border-radius: 10px;
-  background: linear-gradient(90deg, #80634f, #f2d3a5, #80634f);
-  box-shadow: -74px 62px 0 -3px #c7a57e, 74px 62px 0 -3px #c7a57e;
-}
-
-.salon-counter {
-  position: absolute;
-  right: -5%;
-  bottom: 5%;
-  width: 110%;
-  height: 17%;
-  border-top: 3px solid rgba(255,218,150,0.38);
-  background:
-    repeating-linear-gradient(90deg, rgba(255,205,125,0.10) 0 1px, transparent 1px 45px),
-    linear-gradient(to bottom, rgba(116,35,63,0.32), rgba(13,2,8,0.80));
-  transform: perspective(480px) rotateX(58deg);
-  transform-origin: bottom;
-}
-
-@keyframes salonBulbs {
-  from { opacity: 0.72; }
-  to { opacity: 1; }
+  background: linear-gradient(110deg, rgba(255,178,74,0.10), transparent 42%, rgba(66,8,28,0.18));
 }
 
 .theme-salon.lights-on .scene-overlay {
@@ -1737,7 +1636,6 @@ body {
 
 .theme-salon .track-count-label { color: rgba(255,222,196,0.72); }
 
-.theme-salon .bus-scene { top: 58%; }
 .theme-salon .horn-badge,
 .theme-salon .light-btn {
   background: rgba(54,8,32,0.80);
@@ -1748,8 +1646,6 @@ body {
 .theme-salon .light-btn:hover { background: rgba(142,29,75,0.74); }
 .theme-salon .horn-eng,
 .theme-salon .light-btn-eng { color: #ffe8f0; }
-.theme-salon .salon-light-btn.light-on { border-color: rgba(255,219,141,0.74); box-shadow: 0 0 20px rgba(255,191,96,0.42), 0 5px 20px rgba(0,0,0,0.48); }
-
 .theme-salon .shayri-board {
   background: linear-gradient(135deg, rgba(69,10,40,0.94), rgba(31,4,22,0.96));
   border-color: #f48caf;
@@ -1786,10 +1682,4 @@ body {
 
 @media (max-width: 600px) {
   .theme-toggle { margin-top: 1px; padding: 3px 7px; font-size: 0.53rem; letter-spacing: 0.35px; }
-  .theme-salon .bus-scene { top: 56%; }
-  .salon-mirror { top: 16%; width: 82vw; height: 34vh; border-width: 8px; }
-  .salon-bulbs { top: 11%; width: 91vw; height: 37vh; }
-  .salon-pole { top: 39%; left: 5vw; width: 20px; height: 128px; border-width: 3px; }
-  .salon-chair { bottom: 16%; width: 48vw; height: 105px; border-width: 6px; border-bottom-width: 13px; }
-  .salon-chair::after { bottom: -52px; height: 52px; box-shadow: -50px 47px 0 -3px #c7a57e, 50px 47px 0 -3px #c7a57e; }
 }

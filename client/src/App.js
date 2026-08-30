@@ -494,13 +494,13 @@ export default function App() {
         />
       </video>
       {isSalon && (
-        <div className="salon-scene" aria-hidden="true">
-          <div className="salon-bulbs" />
-          <div className="salon-mirror" />
-          <div className="salon-pole" />
-          <div className="salon-chair" />
-          <div className="salon-counter" />
-        </div>
+        <div
+          className="salon-scene"
+          aria-hidden="true"
+          style={{
+            backgroundImage: `linear-gradient(to bottom, rgba(31,8,11,0.30) 0%, rgba(30,4,12,0.02) 42%, rgba(20,3,8,0.54) 100%), url('${process.env.PUBLIC_URL}/images/salon-bg.jpg')`,
+          }}
+        />
       )}
       {/* Dark gradient overlay */}
       <div className="scene-overlay" aria-hidden="true" />
@@ -596,21 +596,21 @@ export default function App() {
           {isSalon ? '90s Romantic Salon' : 'राजू बस ड्राइवर'}
         </h1>
 
-        {!isPlaying && (
+        {!isPlaying && !isSalon && (
           <button
             className="hero-play-prompt"
             onClick={handlePlayPause}
             style={{
               marginTop: '16px',
               padding: '12px 28px',
-              background: isSalon ? 'linear-gradient(135deg, #ff5d91 0%, #8c2555 100%)' : 'linear-gradient(135deg, #e8901f 0%, #c8741a 100%)',
+              background: 'linear-gradient(135deg, #e8901f 0%, #c8741a 100%)',
               color: '#fff',
               border: '2px solid rgba(255,255,255,0.4)',
               borderRadius: '30px',
               fontSize: '1rem',
               fontWeight: 700,
               cursor: 'pointer',
-              boxShadow: isSalon ? '0 0 25px rgba(255, 93, 145, 0.52), 0 4px 15px rgba(0,0,0,0.5)' : '0 0 25px rgba(232, 144, 31, 0.6), 0 4px 15px rgba(0,0,0,0.5)',
+              boxShadow: '0 0 25px rgba(232, 144, 31, 0.6), 0 4px 15px rgba(0,0,0,0.5)',
               display: 'inline-flex',
               alignItems: 'center',
               gap: '10px',
@@ -619,7 +619,7 @@ export default function App() {
             }}
           >
             <span>▶️</span>
-            <span>{isSalon ? 'PLAY ROMANTIC HITS' : 'सफ़र शुरू करें (PLAY)'}</span>
+            <span>सफ़र शुरू करें (PLAY)</span>
           </button>
         )}
 
@@ -641,50 +641,48 @@ export default function App() {
       </div>
 
       {/* ── Bus scene — horn + lights + ticket buttons ── */}
-      <div className="bus-scene">
+      {!isSalon && <div className="bus-scene">
         {/* Horn badge */}
         <button
-          className={`horn-badge ${!isSalon && hornActive ? 'honking' : ''}`}
-          onClick={isSalon ? handlePlayPause : blowHorn}
-          aria-label={isSalon ? 'Play or pause romantic hits' : 'Honk horn - Horn OK Please'}
+          className={`horn-badge ${hornActive ? 'honking' : ''}`}
+          onClick={blowHorn}
+          aria-label="Honk horn - Horn OK Please"
         >
-          <span className="horn-icon">{isSalon ? '🎶' : '📯'}</span>
+          <span className="horn-icon">📯</span>
           <span className="horn-text">
-            <span className="horn-hindi">{isSalon ? 'दिल की धुन' : 'हॉर्न ओके प्लीज़'}</span>
-            <span className="horn-eng">{isSalon ? 'ROMANTIC HITS' : 'HORN OK PLEASEEEE'}</span>
+            <span className="horn-hindi">हॉर्न ओके प्लीज़</span>
+            <span className="horn-eng">HORN OK PLEASEEEE</span>
           </span>
         </button>
 
         {/* Right side buttons */}
         <div className="bus-right-btns">
-          {!isSalon && (
-            <button
-              className="light-btn ticket-btn"
-              onClick={() => setShowTicket(true)}
-              aria-label="Buy ticket"
-            >
-              <span className="light-bulb-icon">🎟️</span>
-              <span className="light-btn-text">
-                <span className="light-btn-hindi">टिकट लो</span>
-                <span className="light-btn-eng">GET TICKET</span>
-              </span>
-            </button>
-          )}
+          <button
+            className="light-btn ticket-btn"
+            onClick={() => setShowTicket(true)}
+            aria-label="Buy ticket"
+          >
+            <span className="light-bulb-icon">🎟️</span>
+            <span className="light-btn-text">
+              <span className="light-btn-hindi">टिकट लो</span>
+              <span className="light-btn-eng">GET TICKET</span>
+            </span>
+          </button>
 
           {/* Light toggle button */}
           <button
-            className={`light-btn ${isSalon ? 'salon-light-btn' : ''} ${lightsOn ? 'light-on' : 'light-off'}`}
+            className={`light-btn ${lightsOn ? 'light-on' : 'light-off'}`}
             onClick={() => setLightsOn(l => !l)}
-            aria-label={isSalon ? (lightsOn ? 'Turn off mirror lights' : 'Turn on mirror lights') : (lightsOn ? 'Turn off bus lights' : 'Turn on bus lights')}
+            aria-label={lightsOn ? 'Turn off bus lights' : 'Turn on bus lights'}
           >
-            <span className="light-bulb-icon">{isSalon ? (lightsOn ? '✨' : '🪞') : (lightsOn ? '💡' : '🌑')}</span>
+            <span className="light-bulb-icon">{lightsOn ? '💡' : '🌑'}</span>
             <span className="light-btn-text">
-              <span className="light-btn-hindi">{isSalon ? (lightsOn ? 'आईना रोशनी' : 'आईना मंद') : (lightsOn ? 'लाइट बंद' : 'लाइट चालू')}</span>
-              <span className="light-btn-eng">{isSalon ? `MIRROR ${lightsOn ? 'GLOW' : 'DIM'}` : `LIGHTS ${lightsOn ? 'OFF' : 'ON'}`}</span>
+              <span className="light-btn-hindi">{lightsOn ? 'लाइट बंद' : 'लाइट चालू'}</span>
+              <span className="light-btn-eng">LIGHTS {lightsOn ? 'OFF' : 'ON'}</span>
             </span>
           </button>
         </div>
-      </div>
+      </div>}
 
       {/* Ticket Modal */}
       {showTicket && <TicketModal onClose={() => setShowTicket(false)} />}
