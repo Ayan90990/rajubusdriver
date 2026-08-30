@@ -93,6 +93,7 @@ export default function App() {
   const [showDriver, setShowDriver] = useState(false);
   const [aboard, setAboard] = useState(1);
   const [songError, setSongError] = useState(null);
+  const [salonRainOn, setSalonRainOn] = useState(false);
   const [deferredInstallPrompt, setDeferredInstallPrompt] = useState(null);
   const [showInstallPrompt, setShowInstallPrompt] = useState(false);
   const [theme, setTheme] = useState(() => {
@@ -464,7 +465,7 @@ export default function App() {
   );
 
   return (
-    <div className={`app theme-${theme} ${lightsOn ? 'lights-on' : 'lights-off'}`}>
+    <div className={`app theme-${theme} ${lightsOn ? 'lights-on' : 'lights-off'} ${isSalon && salonRainOn ? 'salon-rain-active' : ''}`}>
       {/* Background video animation (Official CDN + Local Fallback) */}
       <video
         key="bg-bus-video"
@@ -516,6 +517,7 @@ export default function App() {
 
       {/* Rain */}
       <RainCanvas />
+      {isSalon && salonRainOn && <div className="salon-lightning" aria-hidden="true" />}
 
       {/* HTML5 Audio Player for high-quality local MP3 songs */}
       <audio
@@ -579,6 +581,17 @@ export default function App() {
           >
             {isSalon ? '🚌 Bus Vibe' : '💈 90s Salon'}
           </button>
+          {isSalon && (
+            <button
+              className={`salon-rain-toggle ${salonRainOn ? 'is-active' : ''}`}
+              onClick={() => setSalonRainOn(isOn => !isOn)}
+              aria-pressed={salonRainOn}
+              aria-label={salonRainOn ? 'Turn off rain and lightning' : 'Turn on rain and lightning'}
+              title={salonRainOn ? 'Turn off rain and lightning' : 'Turn on rain and lightning'}
+            >
+              {salonRainOn ? '⚡ बारिश ON' : '☀️ बारिश OFF'}
+            </button>
+          )}
         </div>
       </header>
 
@@ -976,11 +989,11 @@ export default function App() {
             >
               <div className="p-fill" style={{ width: `${progress}%` }} />
               <div
-                className="bus-seek-icon"
+                className={`bus-seek-icon ${isSalon ? 'salon-seek-icon' : ''}`}
                 style={{ left: `${progress}%` }}
-                title={`Seek bus to ${formatTime(currentTime)}`}
+                title={isSalon ? `Seek song to ${formatTime(currentTime)}` : `Seek bus to ${formatTime(currentTime)}`}
               >
-                🚌
+                {isSalon ? '✂️' : '🚌'}
               </div>
             </div>
             <span className="p-time right">{formatTime(duration)}</span>
