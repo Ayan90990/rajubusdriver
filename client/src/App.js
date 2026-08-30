@@ -95,6 +95,20 @@ export default function App() {
   const [songError, setSongError] = useState(null);
   const [deferredInstallPrompt, setDeferredInstallPrompt] = useState(null);
   const [showInstallPrompt, setShowInstallPrompt] = useState(false);
+  const [theme, setTheme] = useState(() => {
+    try {
+      return window.localStorage.getItem('visualTheme') === 'salon' ? 'salon' : 'bus';
+    } catch (_) {
+      return 'bus';
+    }
+  });
+  const isSalon = theme === 'salon';
+
+  useEffect(() => {
+    try {
+      window.localStorage.setItem('visualTheme', theme);
+    } catch (_) {}
+  }, [theme]);
 
   useEffect(() => {
     const dismissed = window.localStorage.getItem('installPromptDismissed');
@@ -450,7 +464,7 @@ export default function App() {
   );
 
   return (
-    <div className={`app ${lightsOn ? 'lights-on' : 'lights-off'}`}>
+    <div className={`app theme-${theme} ${lightsOn ? 'lights-on' : 'lights-off'}`}>
       {/* Background video animation (Official CDN + Local Fallback) */}
       <video
         key="bg-bus-video"
@@ -479,6 +493,15 @@ export default function App() {
           draggable="false"
         />
       </video>
+      {isSalon && (
+        <div className="salon-scene" aria-hidden="true">
+          <div className="salon-bulbs" />
+          <div className="salon-mirror" />
+          <div className="salon-pole" />
+          <div className="salon-chair" />
+          <div className="salon-counter" />
+        </div>
+      )}
       {/* Dark gradient overlay */}
       <div className="scene-overlay" aria-hidden="true" />
 
@@ -522,10 +545,10 @@ export default function App() {
       {/* ── Top bar ── */}
       <header className="top-bar" role="banner">
         <div className="top-left">
-          <div className="bus-badge" aria-hidden="true">🚌</div>
+          <div className="bus-badge" aria-hidden="true">{isSalon ? '✂️' : '🚌'}</div>
           <div className="top-title-small">
-            <span>राजू बस ड्राइवर</span>
-            <span>NH 48 &nbsp;·&nbsp; DELHI – MUMBAI</span>
+            <span>{isSalon ? '90s Romantic Salon' : 'राजू बस ड्राइवर'}</span>
+            <span>{isSalon ? 'LOVE SONGS &nbsp;·&nbsp; RETRO NIGHTS' : 'NH 48 &nbsp;·&nbsp; DELHI – MUMBAI'}</span>
           </div>
         </div>
 
@@ -539,30 +562,38 @@ export default function App() {
           </div>
           <div
             className="who-driving"
-            role="button"
-            tabIndex={0}
-            aria-label="Who's driving?"
-            onClick={() => setShowDriver(true)}
-            onKeyDown={e => e.key === 'Enter' && setShowDriver(true)}
+            role={isSalon ? undefined : 'button'}
+            tabIndex={isSalon ? -1 : 0}
+            aria-label={isSalon ? '90s Romantic Salon' : "Who's driving?"}
+            onClick={() => !isSalon && setShowDriver(true)}
+            onKeyDown={e => !isSalon && e.key === 'Enter' && setShowDriver(true)}
           >
-            <div className="driver-avatar" aria-hidden="true">👨</div>
-            Who's driving?
+            <div className="driver-avatar" aria-hidden="true">{isSalon ? '💈' : '👨'}</div>
+            {isSalon ? 'Salon vibes' : "Who's driving?"}
           </div>
+          <button
+            className="theme-toggle"
+            onClick={() => setTheme(currentTheme => currentTheme === 'bus' ? 'salon' : 'bus')}
+            aria-label={isSalon ? 'Switch to Bus Driver theme' : 'Switch to 90s Romantic Salon theme'}
+            title={isSalon ? 'Switch to Bus Driver theme' : 'Switch to 90s Romantic Salon theme'}
+          >
+            {isSalon ? '🚌 Bus Vibe' : '💈 90s Salon'}
+          </button>
         </div>
       </header>
 
       {/* ── Hero center ── */}
       <div className="hero-center">
-        <p className="track-count-label">{songs.length} TRACKS &nbsp;·&nbsp; NON-STOP</p>
+        <p className="track-count-label">{isSalon ? '90s ROMANTIC HITS · LOVE MIX' : `${songs.length} TRACKS · NON-STOP`}</p>
         <h1
           className="hero-title"
-          lang="hi"
-          aria-label="राजू बस ड्राइवर - Raju Bus Driver"
+          lang={isSalon ? 'en' : 'hi'}
+          aria-label={isSalon ? '90s Romantic Salon' : 'राजू बस ड्राइवर - Raju Bus Driver'}
           onClick={handlePlayPause}
           style={{ cursor: 'pointer' }}
           title="Click to play / pause"
         >
-          राजू बस ड्राइवर
+          {isSalon ? '90s Romantic Salon' : 'राजू बस ड्राइवर'}
         </h1>
 
         {!isPlaying && (
@@ -572,14 +603,14 @@ export default function App() {
             style={{
               marginTop: '16px',
               padding: '12px 28px',
-              background: 'linear-gradient(135deg, #e8901f 0%, #c8741a 100%)',
+              background: isSalon ? 'linear-gradient(135deg, #ff5d91 0%, #8c2555 100%)' : 'linear-gradient(135deg, #e8901f 0%, #c8741a 100%)',
               color: '#fff',
               border: '2px solid rgba(255,255,255,0.4)',
               borderRadius: '30px',
               fontSize: '1rem',
               fontWeight: 700,
               cursor: 'pointer',
-              boxShadow: '0 0 25px rgba(232, 144, 31, 0.6), 0 4px 15px rgba(0,0,0,0.5)',
+              boxShadow: isSalon ? '0 0 25px rgba(255, 93, 145, 0.52), 0 4px 15px rgba(0,0,0,0.5)' : '0 0 25px rgba(232, 144, 31, 0.6), 0 4px 15px rgba(0,0,0,0.5)',
               display: 'inline-flex',
               alignItems: 'center',
               gap: '10px',
@@ -588,7 +619,7 @@ export default function App() {
             }}
           >
             <span>▶️</span>
-            <span>सफ़र शुरू करें (PLAY)</span>
+            <span>{isSalon ? 'PLAY ROMANTIC HITS' : 'सफ़र शुरू करें (PLAY)'}</span>
           </button>
         )}
 
@@ -613,42 +644,43 @@ export default function App() {
       <div className="bus-scene">
         {/* Horn badge */}
         <button
-          className={`horn-badge ${hornActive ? 'honking' : ''}`}
-          onClick={blowHorn}
-          aria-label="Honk horn - Horn OK Please"
+          className={`horn-badge ${!isSalon && hornActive ? 'honking' : ''}`}
+          onClick={isSalon ? handlePlayPause : blowHorn}
+          aria-label={isSalon ? 'Play or pause romantic hits' : 'Honk horn - Horn OK Please'}
         >
-          <span className="horn-icon">📯</span>
+          <span className="horn-icon">{isSalon ? '🎶' : '📯'}</span>
           <span className="horn-text">
-            <span className="horn-hindi">हॉर्न ओके प्लीज़</span>
-            <span className="horn-eng">HORN OK PLEASEEEE</span>
+            <span className="horn-hindi">{isSalon ? 'दिल की धुन' : 'हॉर्न ओके प्लीज़'}</span>
+            <span className="horn-eng">{isSalon ? 'ROMANTIC HITS' : 'HORN OK PLEASEEEE'}</span>
           </span>
         </button>
 
         {/* Right side buttons */}
         <div className="bus-right-btns">
-          {/* Ticket button */}
-          <button
-            className="light-btn ticket-btn"
-            onClick={() => setShowTicket(true)}
-            aria-label="Buy ticket"
-          >
-            <span className="light-bulb-icon">🎟️</span>
-            <span className="light-btn-text">
-              <span className="light-btn-hindi">टिकट लो</span>
-              <span className="light-btn-eng">GET TICKET</span>
-            </span>
-          </button>
+          {!isSalon && (
+            <button
+              className="light-btn ticket-btn"
+              onClick={() => setShowTicket(true)}
+              aria-label="Buy ticket"
+            >
+              <span className="light-bulb-icon">🎟️</span>
+              <span className="light-btn-text">
+                <span className="light-btn-hindi">टिकट लो</span>
+                <span className="light-btn-eng">GET TICKET</span>
+              </span>
+            </button>
+          )}
 
           {/* Light toggle button */}
           <button
-            className={`light-btn ${lightsOn ? 'light-on' : 'light-off'}`}
+            className={`light-btn ${isSalon ? 'salon-light-btn' : ''} ${lightsOn ? 'light-on' : 'light-off'}`}
             onClick={() => setLightsOn(l => !l)}
-            aria-label={lightsOn ? 'Turn off bus lights' : 'Turn on bus lights'}
+            aria-label={isSalon ? (lightsOn ? 'Turn off mirror lights' : 'Turn on mirror lights') : (lightsOn ? 'Turn off bus lights' : 'Turn on bus lights')}
           >
-            <span className="light-bulb-icon">{lightsOn ? '💡' : '🌑'}</span>
+            <span className="light-bulb-icon">{isSalon ? (lightsOn ? '✨' : '🪞') : (lightsOn ? '💡' : '🌑')}</span>
             <span className="light-btn-text">
-              <span className="light-btn-hindi">{lightsOn ? 'लाइट बंद' : 'लाइट चालू'}</span>
-              <span className="light-btn-eng">LIGHTS {lightsOn ? 'OFF' : 'ON'}</span>
+              <span className="light-btn-hindi">{isSalon ? (lightsOn ? 'आईना रोशनी' : 'आईना मंद') : (lightsOn ? 'लाइट बंद' : 'लाइट चालू')}</span>
+              <span className="light-btn-eng">{isSalon ? `MIRROR ${lightsOn ? 'GLOW' : 'DIM'}` : `LIGHTS ${lightsOn ? 'OFF' : 'ON'}`}</span>
             </span>
           </button>
         </div>
@@ -806,20 +838,29 @@ export default function App() {
           { hi: 'मंज़िल उसी की होती है जो हिम्मत नहीं हारता', en: 'The destination belongs to those who never give up' },
           { hi: 'चलते रहो, ज़िन्दगी रुकती नहीं', en: 'Keep moving, life never stops' },
         ];
-        const s = shayris[shayriIndex % shayris.length];
+        const salonShayris = [
+          { hi: 'पुराने गीतों में नई सी मोहब्बत', en: 'Old songs, a love that feels new' },
+          { hi: 'आईने में मुस्कान, दिल में 90s की धुन', en: 'A smile in the mirror, a 90s tune in the heart' },
+          { hi: 'कंघी की खनक और यादों की शाम', en: 'The sound of a comb and an evening of memories' },
+          { hi: 'रेडियो बजा, शाम थोड़ी और हसीन हुई', en: 'The radio played, and the evening grew prettier' },
+          { hi: 'बालों की खुशबू, दिल का पुराना जादू', en: 'The scent of hair, the heart’s old magic' },
+          { hi: 'बारिश की रात और दिल की बात', en: 'A rainy night and a conversation of hearts' },
+        ];
+        const activeShayris = isSalon ? salonShayris : shayris;
+        const s = activeShayris[shayriIndex % activeShayris.length];
         return (
           <div className="shayri-board">
             <div className="shayri-content">
-              <span className="shayri-deco">❝</span>
+              <span className="shayri-deco">{isSalon ? '♪' : '❝'}</span>
               <div className="shayri-text">
                 <p className="shayri-hi" lang="hi">{s.hi}</p>
                 <p className="shayri-en">{s.en}</p>
               </div>
-              <span className="shayri-deco">❞</span>
+              <span className="shayri-deco">{isSalon ? '♡' : '❞'}</span>
             </div>
             <button
               className="shayri-refresh"
-              onClick={() => setShayriIndex(i => (i + 1 + Math.floor(Math.random() * 5)) % shayris.length + (i + 1))}
+              onClick={() => setShayriIndex(i => (i + 1 + Math.floor(Math.random() * 5)) % activeShayris.length + (i + 1))}
               aria-label="New shayri"
               title="Naya shayri"
             >

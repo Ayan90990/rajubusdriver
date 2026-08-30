@@ -1546,3 +1546,250 @@ body {
   from { opacity: 0; transform: translate(-50%, 18px); }
   to { opacity: 1; transform: translate(-50%, 0); }
 }
+
+/* ─── Theme switcher ─── */
+.theme-toggle {
+  align-self: flex-end;
+  margin-top: 2px;
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 999px;
+  padding: 4px 9px;
+  background: rgba(20, 10, 0, 0.54);
+  color: rgba(255,255,255,0.84);
+  font: 700 0.62rem 'Baloo 2', sans-serif;
+  letter-spacing: 0.55px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.28);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+  transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-1px);
+  background: rgba(200,116,26,0.32);
+  border-color: rgba(255,214,128,0.72);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 2px;
+}
+
+/* ─── 90s Romantic Salon theme ─── */
+.app.theme-salon {
+  --amber: #f2a743;
+  --amber2: #ff5d91;
+  --dark: #1d0611;
+  --dark2: #3d1023;
+  --pink: #ff5d91;
+  --teal: #ffd875;
+  --player-bg: rgba(40, 7, 24, 0.94);
+  background: #17050e;
+}
+
+.theme-salon .scene-bg-img {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.salon-scene {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 50% -8%, rgba(255,196,115,0.32) 0%, rgba(255,121,170,0.13) 30%, transparent 58%),
+    linear-gradient(118deg, #18040d 0%, #511531 46%, #210714 100%);
+  transition: filter 0.8s ease;
+}
+
+.salon-scene::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.42;
+  background:
+    repeating-linear-gradient(90deg, transparent 0 78px, rgba(255,209,134,0.06) 79px 81px, transparent 82px 156px),
+    linear-gradient(to bottom, rgba(0,0,0,0.08) 0%, transparent 34%, rgba(8,0,4,0.42) 100%);
+}
+
+.salon-bulbs {
+  position: absolute;
+  top: 8%;
+  left: 50%;
+  width: min(800px, 88vw);
+  height: min(440px, 48vh);
+  transform: translateX(-50%);
+  background:
+    radial-gradient(circle at 4% 8%, #fff9d1 0 3px, #ffc45c 4px 7px, transparent 9px),
+    radial-gradient(circle at 18% 2%, #fff9d1 0 3px, #ffc45c 4px 7px, transparent 9px),
+    radial-gradient(circle at 36% 0%, #fff9d1 0 3px, #ffc45c 4px 7px, transparent 9px),
+    radial-gradient(circle at 54% 0%, #fff9d1 0 3px, #ffc45c 4px 7px, transparent 9px),
+    radial-gradient(circle at 72% 2%, #fff9d1 0 3px, #ffc45c 4px 7px, transparent 9px),
+    radial-gradient(circle at 96% 8%, #fff9d1 0 3px, #ffc45c 4px 7px, transparent 9px),
+    radial-gradient(circle at 2% 52%, #fff9d1 0 3px, #ffc45c 4px 7px, transparent 9px),
+    radial-gradient(circle at 98% 52%, #fff9d1 0 3px, #ffc45c 4px 7px, transparent 9px);
+  filter: drop-shadow(0 0 12px rgba(255,196,90,0.72));
+  animation: salonBulbs 2.8s ease-in-out infinite alternate;
+}
+
+.salon-mirror {
+  position: absolute;
+  top: 13%;
+  left: 50%;
+  width: min(690px, 76vw);
+  height: min(390px, 43vh);
+  transform: translateX(-50%);
+  border: 12px solid #b65d62;
+  border-bottom-color: #6c283e;
+  border-radius: 48% 48% 14% 14% / 38% 38% 9% 9%;
+  background:
+    linear-gradient(128deg, rgba(255,255,255,0.23) 0 13%, transparent 14% 43%, rgba(255,255,255,0.06) 44% 52%, transparent 53%),
+    radial-gradient(ellipse at 50% 34%, rgba(255,195,226,0.40), rgba(99,26,74,0.62) 54%, rgba(29,6,21,0.86) 100%);
+  box-shadow:
+    0 0 0 4px rgba(255,208,107,0.22),
+    0 0 42px rgba(255,69,143,0.35),
+    inset 0 0 45px rgba(0,0,0,0.40);
+}
+
+.salon-pole {
+  position: absolute;
+  top: 34%;
+  left: clamp(18px, 8vw, 110px);
+  width: 28px;
+  height: 180px;
+  border: 4px solid #f5d59b;
+  border-radius: 18px;
+  background: repeating-linear-gradient(135deg, #e63d62 0 14px, #fff3d5 14px 28px, #3d80b9 28px 42px, #fff3d5 42px 56px);
+  box-shadow: 0 0 20px rgba(255,190,126,0.48);
+}
+
+.salon-chair {
+  position: absolute;
+  left: 50%;
+  bottom: 13%;
+  width: min(270px, 45vw);
+  height: 146px;
+  transform: translateX(-50%);
+  border: 8px solid #ec7aa1;
+  border-bottom: 18px solid #d7b088;
+  border-radius: 32px 32px 20px 20px;
+  background:
+    linear-gradient(to bottom, transparent 0 38%, rgba(36,5,22,0.88) 39% 100%),
+    linear-gradient(105deg, #8d183f, #f06b9c 48%, #6c1232);
+  box-shadow: 0 18px 26px rgba(0,0,0,0.45), inset 0 0 22px rgba(255,223,236,0.18);
+}
+
+.salon-chair::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -68px;
+  width: 18px;
+  height: 68px;
+  transform: translateX(-50%);
+  border-radius: 10px;
+  background: linear-gradient(90deg, #80634f, #f2d3a5, #80634f);
+  box-shadow: -74px 62px 0 -3px #c7a57e, 74px 62px 0 -3px #c7a57e;
+}
+
+.salon-counter {
+  position: absolute;
+  right: -5%;
+  bottom: 5%;
+  width: 110%;
+  height: 17%;
+  border-top: 3px solid rgba(255,218,150,0.38);
+  background:
+    repeating-linear-gradient(90deg, rgba(255,205,125,0.10) 0 1px, transparent 1px 45px),
+    linear-gradient(to bottom, rgba(116,35,63,0.32), rgba(13,2,8,0.80));
+  transform: perspective(480px) rotateX(58deg);
+  transform-origin: bottom;
+}
+
+@keyframes salonBulbs {
+  from { opacity: 0.72; }
+  to { opacity: 1; }
+}
+
+.theme-salon.lights-on .scene-overlay {
+  background: linear-gradient(to bottom, rgba(25,4,15,0.72) 0%, rgba(45,6,29,0.12) 29%, rgba(41,5,25,0.08) 54%, rgba(21,3,13,0.72) 100%);
+}
+
+.theme-salon.lights-off .scene-overlay {
+  background: linear-gradient(to bottom, rgba(8,1,5,0.94), rgba(11,1,7,0.62) 48%, rgba(5,0,3,0.96));
+}
+
+.theme-salon.lights-off .salon-scene { filter: brightness(0.43) saturate(0.55); }
+.theme-salon .rain-canvas,
+.theme-salon .headlight-cone,
+.theme-salon .road-glow,
+.theme-salon .bus-window-glow { opacity: 0; }
+
+.theme-salon .hero-title {
+  font-family: 'Baloo 2', sans-serif;
+  letter-spacing: 0.035em;
+  color: #fff1ed;
+  text-shadow: 0 0 20px rgba(255,85,150,0.62), 0 2px 10px rgba(0,0,0,0.72);
+}
+
+.theme-salon .track-count-label { color: rgba(255,222,196,0.72); }
+
+.theme-salon .bus-scene { top: 58%; }
+.theme-salon .horn-badge,
+.theme-salon .light-btn {
+  background: rgba(54,8,32,0.80);
+  border-color: rgba(255,182,209,0.48);
+  box-shadow: 0 5px 20px rgba(0,0,0,0.48), 0 0 14px rgba(255,81,147,0.16);
+}
+.theme-salon .horn-badge:hover,
+.theme-salon .light-btn:hover { background: rgba(142,29,75,0.74); }
+.theme-salon .horn-eng,
+.theme-salon .light-btn-eng { color: #ffe8f0; }
+.theme-salon .salon-light-btn.light-on { border-color: rgba(255,219,141,0.74); box-shadow: 0 0 20px rgba(255,191,96,0.42), 0 5px 20px rgba(0,0,0,0.48); }
+
+.theme-salon .shayri-board {
+  background: linear-gradient(135deg, rgba(69,10,40,0.94), rgba(31,4,22,0.96));
+  border-color: #f48caf;
+  box-shadow: 0 0 0 1px rgba(255,175,204,0.28), 0 0 22px rgba(255,83,150,0.26), inset 0 1px 0 rgba(255,255,255,0.10);
+}
+.theme-salon .shayri-board::before { border-color: rgba(255,191,216,0.38); }
+.theme-salon .shayri-hi { color: #ffd2df; text-shadow: 0 0 12px rgba(255,86,153,0.55); }
+.theme-salon .shayri-deco,
+.theme-salon .shayri-refresh { color: #ffd36a; }
+.theme-salon .shayri-refresh { border-color: rgba(255,210,106,0.48); background: rgba(255,104,163,0.14); }
+
+.theme-salon .player-pill {
+  background: rgba(46,7,28,0.94);
+  border-color: rgba(255,177,207,0.18);
+  box-shadow: 0 8px 40px rgba(7,0,4,0.74), 0 0 28px rgba(255,64,138,0.13), inset 0 1px 0 rgba(255,255,255,0.08);
+}
+.theme-salon .pc.pc-play { background: linear-gradient(135deg, #ffbfd3, #ff6fa1); color: #44071f; }
+.theme-salon .pill-art { border-color: rgba(255,203,222,0.32); box-shadow: 0 0 0 3px rgba(255,91,153,0.32); }
+.theme-salon .p-track { background: rgba(255,225,238,0.24); }
+.theme-salon .p-track-fill { background: linear-gradient(90deg, #ff6f9f, #ffd26a); }
+
+.theme-salon .queue-panel,
+.theme-salon .driver-modal-card,
+.theme-salon .download-modal-card { background: rgba(43,6,26,0.98); border-color: rgba(255,158,197,0.35); }
+.theme-salon .queue-header { border-color: rgba(255,145,190,0.25); }
+.theme-salon .queue-item.active { background: rgba(255,84,151,0.14); }
+
+.theme-salon .theme-toggle {
+  background: rgba(121,19,65,0.64);
+  border-color: rgba(255,184,210,0.58);
+  color: #fff2f5;
+}
+.theme-salon .theme-toggle:hover { background: rgba(213,58,121,0.62); border-color: #ffd36a; }
+
+@media (max-width: 600px) {
+  .theme-toggle { margin-top: 1px; padding: 3px 7px; font-size: 0.53rem; letter-spacing: 0.35px; }
+  .theme-salon .bus-scene { top: 56%; }
+  .salon-mirror { top: 16%; width: 82vw; height: 34vh; border-width: 8px; }
+  .salon-bulbs { top: 11%; width: 91vw; height: 37vh; }
+  .salon-pole { top: 39%; left: 5vw; width: 20px; height: 128px; border-width: 3px; }
+  .salon-chair { bottom: 16%; width: 48vw; height: 105px; border-width: 6px; border-bottom-width: 13px; }
+  .salon-chair::after { bottom: -52px; height: 52px; box-shadow: -50px 47px 0 -3px #c7a57e, 50px 47px 0 -3px #c7a57e; }
+}
