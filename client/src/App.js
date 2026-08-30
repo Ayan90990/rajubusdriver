@@ -96,20 +96,9 @@ export default function App() {
   const [salonRainOn, setSalonRainOn] = useState(false);
   const [deferredInstallPrompt, setDeferredInstallPrompt] = useState(null);
   const [showInstallPrompt, setShowInstallPrompt] = useState(false);
-  const [theme, setTheme] = useState(() => {
-    try {
-      return window.localStorage.getItem('visualTheme') === 'salon' ? 'salon' : 'bus';
-    } catch (_) {
-      return 'bus';
-    }
-  });
+  // Always start on the Bus theme; Salon is a temporary user-selected vibe.
+  const [theme, setTheme] = useState('bus');
   const isSalon = theme === 'salon';
-
-  useEffect(() => {
-    try {
-      window.localStorage.setItem('visualTheme', theme);
-    } catch (_) {}
-  }, [theme]);
 
   useEffect(() => {
     const dismissed = window.localStorage.getItem('installPromptDismissed');
