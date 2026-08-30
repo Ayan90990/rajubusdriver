@@ -1008,6 +1008,7 @@ export default function App() {
           <span className="kbd-hint"><kbd>M</kbd> MUTE</span>
           <span className="kbd-hint"><kbd>H</kbd> HORN</span>
         </div>
+        <a className="playlist-page-link" href="/bus-driver-playlist/">Bus Driver Playlist · Hindi Night Drive Songs</a>
 
       </footer>
 

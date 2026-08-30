@@ -734,6 +734,21 @@ body {
   color: rgba(255,255,255,0.4);
 }
 
+.playlist-page-link {
+  display: block;
+  width: fit-content;
+  margin: 3px auto 0;
+  color: rgba(255,231,175,0.62);
+  font-size: 0.53rem;
+  font-weight: 700;
+  letter-spacing: 0.42px;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.playlist-page-link:hover,
+.playlist-page-link:focus-visible { color: #ffe39a; text-decoration: underline; }
+
 /* Volume slider */
 .vol-slider {
   -webkit-appearance: none;
