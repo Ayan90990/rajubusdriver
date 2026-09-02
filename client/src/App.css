@@ -1616,9 +1616,13 @@ body {
 }
 
 /* ─── Theme switcher ─── */
-.theme-toggle {
+.theme-switcher {
+  position: relative;
   align-self: flex-end;
   margin-top: 2px;
+}
+
+.theme-toggle {
   border: 1px solid rgba(255,255,255,0.22);
   border-radius: 999px;
   padding: 4px 9px;
@@ -1644,6 +1648,41 @@ body {
   outline: 2px solid var(--teal);
   outline-offset: 2px;
 }
+
+.theme-options {
+  position: absolute;
+  top: calc(100% + 5px);
+  right: 0;
+  z-index: 25;
+  min-width: 142px;
+  padding: 4px;
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 10px;
+  background: rgba(23, 12, 2, 0.94);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.42);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.theme-option {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 7px;
+  border: 0;
+  border-radius: 7px;
+  padding: 7px 8px;
+  background: transparent;
+  color: rgba(255,255,255,0.80);
+  font: 700 0.66rem 'Baloo 2', sans-serif;
+  letter-spacing: 0.25px;
+  text-align: left;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.theme-option:hover { background: rgba(255,255,255,0.10); color: #fff; }
+.theme-option.selected { background: rgba(232,144,31,0.20); color: #ffe0a4; }
 
 .salon-rain-toggle {
   align-self: flex-end;
@@ -1813,9 +1852,14 @@ body {
   color: #fff2f5;
 }
 .theme-salon .theme-toggle:hover { background: rgba(213,58,121,0.62); border-color: #ffd36a; }
+.theme-salon .theme-options { border-color: rgba(255,184,210,0.40); background: rgba(57,8,35,0.95); }
+.theme-salon .theme-option.selected { background: rgba(255,91,153,0.25); color: #ffe0ee; }
 
 @media (max-width: 600px) {
-  .theme-toggle { margin-top: 1px; padding: 3px 7px; font-size: 0.53rem; letter-spacing: 0.35px; }
+  .theme-switcher { margin-top: 1px; }
+  .theme-toggle { padding: 3px 7px; font-size: 0.53rem; letter-spacing: 0.35px; }
+  .theme-options { min-width: 126px; padding: 3px; }
+  .theme-option { padding: 6px 7px; gap: 5px; font-size: 0.57rem; }
   .salon-rain-toggle { padding: 3px 7px; font-size: 0.51rem; letter-spacing: 0.28px; }
 }
 

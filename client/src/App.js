@@ -97,6 +97,7 @@ export default function App() {
   const [salonRainOn, setSalonRainOn] = useState(false);
   const [deferredInstallPrompt, setDeferredInstallPrompt] = useState(null);
   const [showInstallPrompt, setShowInstallPrompt] = useState(false);
+  const [showThemeMenu, setShowThemeMenu] = useState(false);
   // Always start on the Bus theme; Salon is a temporary user-selected vibe.
   const [theme, setTheme] = useState('bus');
   const isSalon = theme === 'salon';
@@ -567,14 +568,38 @@ export default function App() {
             <div className="driver-avatar" aria-hidden="true">{isSalon ? '💈' : '👨'}</div>
             {isSalon ? 'Salon vibes' : "Who's driving?"}
           </div>
-          <button
-            className="theme-toggle"
-            onClick={() => setTheme(currentTheme => currentTheme === 'bus' ? 'salon' : 'bus')}
-            aria-label={isSalon ? 'Switch to Bus Driver theme' : 'Switch to 90s Romantic Salon theme'}
-            title={isSalon ? 'Switch to Bus Driver theme' : 'Switch to 90s Romantic Salon theme'}
-          >
-            {isSalon ? '🚌 Bus Vibe' : '💈 90s Salon'}
-          </button>
+          <div className="theme-switcher">
+            <button
+              className="theme-toggle"
+              onClick={() => setShowThemeMenu(open => !open)}
+              aria-expanded={showThemeMenu}
+              aria-controls="theme-options"
+              aria-label="Change theme"
+              title="Change theme"
+            >
+              Change Theme <span aria-hidden="true">⌄</span>
+            </button>
+            {showThemeMenu && (
+              <div className="theme-options" id="theme-options" role="menu" aria-label="Theme options">
+                <button
+                  className={`theme-option ${!isSalon ? 'selected' : ''}`}
+                  role="menuitemradio"
+                  aria-checked={!isSalon}
+                  onClick={() => { setTheme('bus'); setSalonRainOn(false); setShowThemeMenu(false); }}
+                >
+                  <span aria-hidden="true">🚌</span> Bus Driver
+                </button>
+                <button
+                  className={`theme-option ${isSalon ? 'selected' : ''}`}
+                  role="menuitemradio"
+                  aria-checked={isSalon}
+                  onClick={() => { setTheme('salon'); setShowThemeMenu(false); }}
+                >
+                  <span aria-hidden="true">✂️</span> Deluxe Salon
+                </button>
+              </div>
+            )}
+          </div>
           {isSalon && (
             <button
               className={`salon-rain-toggle ${salonRainOn ? 'is-active' : ''}`}
