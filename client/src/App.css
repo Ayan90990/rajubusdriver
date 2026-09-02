@@ -990,7 +990,7 @@ body {
   .top-bar { padding: 10px 18px 0; }
   .player-pill { width: calc(100vw - 32px); padding: 8px 14px; }
   .bus-scene { top: 48%; padding: 0 16px; gap: 10px; }
-  .shayri-board { bottom: 95px; width: calc(100vw - 32px); }
+  .shayri-board { bottom: 95px; width: calc(100vw - 44px); }
   .player-bar { padding: 0 0 12px; }
 }
 
@@ -1049,12 +1049,12 @@ body {
   .light-bulb-icon { font-size: 0.9rem; }
   .light-btn-text span:first-child { font-size: 0.58rem; }
   .light-btn-text span:last-child { font-size: 0.5rem; }
-  .shayri-board { bottom: 85px; width: calc(100vw - 24px); padding: 5px 10px; gap: 6px; border-width: 1.5px; }
-  .shayri-content { gap: 6px; }
-  .shayri-deco { font-size: 1.2rem; }
-  .shayri-hi { font-size: 0.7rem; }
-  .shayri-en { font-size: 0.55rem; }
-  .shayri-refresh { width: 26px; height: 26px; font-size: 0.78rem; }
+  .shayri-board { bottom: 85px; width: calc(100vw - 32px); padding: 4px 8px; gap: 5px; border-width: 1.5px; }
+  .shayri-content { gap: 5px; }
+  .shayri-deco { font-size: 1.05rem; }
+  .shayri-hi { font-size: 0.68rem; }
+  .shayri-en { font-size: 0.52rem; }
+  .shayri-refresh { width: 24px; height: 24px; font-size: 0.72rem; }
   .player-bar { padding: 0 0 calc(env(safe-area-inset-bottom, 6px) + 6px); }
   .player-pill { width: min(672px, calc(100vw - 14px)); height: 97.6px; padding: 6px 10px; gap: 4px; border-radius: 40px; }
   .pill-art { width: 32px; height: 32px; }
@@ -1266,13 +1266,13 @@ body {
   z-index: 50;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 7px;
   background: linear-gradient(135deg, rgba(15,8,0,0.92) 0%, rgba(30,16,2,0.95) 100%);
-  border: 2px solid var(--amber);
+  border: 1.5px solid var(--amber);
   border-radius: 10px;
-  padding: 8px 14px 8px 12px;
-  max-width: 520px;
-  width: calc(100vw - 32px);
+  padding: 6px 12px 6px 10px;
+  max-width: 460px;
+  width: calc(100vw - 40px);
   box-shadow:
     0 0 0 1px rgba(200,116,26,0.3),
     0 0 18px rgba(200,116,26,0.25),
@@ -1294,12 +1294,12 @@ body {
 .shayri-content {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 7px;
   flex: 1;
   min-width: 0;
 }
 .shayri-deco {
-  font-size: 1.4rem;
+  font-size: 1.18rem;
   color: var(--amber);
   opacity: 0.7;
   flex-shrink: 0;
@@ -1312,7 +1312,7 @@ body {
 }
 .shayri-hi {
   font-family: 'Baloo 2', sans-serif;
-  font-size: clamp(0.78rem, 2.2vw, 0.95rem);
+  font-size: clamp(0.75rem, 2vw, 0.88rem);
   font-weight: 700;
   color: #ffd580;
   letter-spacing: 0.3px;
@@ -1323,10 +1323,10 @@ body {
   text-overflow: ellipsis;
 }
 .shayri-en {
-  font-size: clamp(0.62rem, 1.6vw, 0.72rem);
+  font-size: clamp(0.58rem, 1.45vw, 0.67rem);
   color: rgba(255,255,255,0.45);
   letter-spacing: 0.5px;
-  margin-top: 2px;
+  margin-top: 1px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1335,12 +1335,12 @@ body {
   background: rgba(200,116,26,0.15);
   border: 1px solid rgba(200,116,26,0.4);
   border-radius: 6px;
-  width: 28px;
-  height: 28px;
+  width: 25px;
+  height: 25px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.85rem;
+  font-size: 0.76rem;
   cursor: pointer;
   flex-shrink: 0;
   transition: all 0.2s;
