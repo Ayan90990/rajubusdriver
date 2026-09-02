@@ -845,6 +845,59 @@ body {
 }
 .queue-close:hover { background: rgba(255,255,255,0.15); color: #fff; }
 
+.queue-search-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin: 10px 16px 4px;
+  flex-shrink: 0;
+}
+
+.queue-search-icon {
+  position: absolute;
+  left: 11px;
+  width: 16px;
+  height: 16px;
+  fill: rgba(255,255,255,0.43);
+  pointer-events: none;
+}
+
+.queue-search {
+  width: 100%;
+  height: 36px;
+  border: 1px solid rgba(255,255,255,0.13);
+  border-radius: 10px;
+  padding: 0 35px;
+  outline: none;
+  background: rgba(255,255,255,0.07);
+  color: #fff;
+  font: 600 0.78rem 'Baloo 2', sans-serif;
+  transition: border-color 0.18s ease, background 0.18s ease;
+}
+
+.queue-search::placeholder { color: rgba(255,255,255,0.42); }
+.queue-search:focus { border-color: rgba(232,144,31,0.75); background: rgba(255,255,255,0.10); }
+
+.queue-search-clear {
+  position: absolute;
+  right: 7px;
+  width: 23px;
+  height: 23px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.10);
+  color: rgba(255,255,255,0.72);
+  cursor: pointer;
+  font-size: 0.68rem;
+}
+
+.queue-empty-search {
+  padding: 28px 20px;
+  color: rgba(255,255,255,0.52);
+  text-align: center;
+  font-size: 0.8rem;
+}
+
 /* List */
 .queue-list {
   list-style: none;
@@ -1751,6 +1804,8 @@ body {
 .theme-salon .download-modal-card { background: rgba(43,6,26,0.98); border-color: rgba(255,158,197,0.35); }
 .theme-salon .queue-header { border-color: rgba(255,145,190,0.25); }
 .theme-salon .queue-item.active { background: rgba(255,84,151,0.14); }
+.theme-salon .queue-search { border-color: rgba(255,174,207,0.25); background: rgba(255,214,232,0.09); }
+.theme-salon .queue-search:focus { border-color: #ff9bc4; background: rgba(255,214,232,0.14); }
 
 .theme-salon .theme-toggle {
   background: rgba(121,19,65,0.64);

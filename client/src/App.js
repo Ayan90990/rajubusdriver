@@ -87,6 +87,7 @@ export default function App() {
   const [isMuted, setIsMuted] = useState(false);
   const [hornActive, setHornActive] = useState(false);
   const [showQueue, setShowQueue] = useState(false);
+  const [playlistSearch, setPlaylistSearch] = useState('');
   const [lightsOn, setLightsOn] = useState(true);
   const [showTicket, setShowTicket] = useState(false);
   const [showDownloadModal, setShowDownloadModal] = useState(false);
@@ -184,6 +185,10 @@ export default function App() {
 
   const currentIndex = queue.length ? queue[queuePos % queue.length] : 0;
   const currentSong = songs[currentIndex] || songs[0];
+  const normalizedPlaylistSearch = playlistSearch.trim().toLowerCase();
+  const filteredSongs = songs
+    .map((song, index) => ({ song, index }))
+    .filter(({ song }) => !normalizedPlaylistSearch || `${song.title} ${song.artist || ''}`.toLowerCase().includes(normalizedPlaylistSearch));
 
   const playTrack = useCallback((song) => {
     const audio = audioRef.current;
@@ -764,11 +769,25 @@ export default function App() {
               </svg>
               Queue &nbsp;<span className="queue-count">{songs.length} songs</span>
             </span>
-            <button className="queue-close" onClick={() => setShowQueue(false)} aria-label="Close playlist">✕</button>
+            <button className="queue-close" onClick={() => { setShowQueue(false); setPlaylistSearch(''); }} aria-label="Close playlist">✕</button>
+          </div>
+          <div className="queue-search-wrap">
+            <svg className="queue-search-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m21 19-5.4-5.4a7 7 0 1 0-2 2L19 21l2-2ZM5 10a5 5 0 1 1 10 0 5 5 0 0 1-10 0Z"/></svg>
+            <input
+              className="queue-search"
+              type="search"
+              value={playlistSearch}
+              onChange={event => setPlaylistSearch(event.target.value)}
+              placeholder="Search songs or artist..."
+              aria-label="Search playlist songs or artists"
+            />
+            {playlistSearch && (
+              <button className="queue-search-clear" onClick={() => setPlaylistSearch('')} aria-label="Clear search">✕</button>
+            )}
           </div>
           <ul className="queue-list" role="list">
-            {songs.map((song, i) => {
-              const isActive = i === currentIndex;
+            {filteredSongs.map(({ song, index }) => {
+              const isActive = index === currentIndex;
               return (
                 <li
                   key={song._id || song.videoId}
@@ -777,14 +796,14 @@ export default function App() {
                   tabIndex={0}
                   aria-label={`Play ${song.title}`}
                   aria-current={isActive ? 'true' : undefined}
-                  onClick={() => selectSong(i)}
-                  onKeyDown={e => { if (e.key === 'Enter') selectSong(i); }}
+                  onClick={() => selectSong(index)}
+                  onKeyDown={e => { if (e.key === 'Enter') selectSong(index); }}
                 >
                   {/* Thumb */}
                   <div className="qi-thumb">
                     {isActive
                       ? <div className="qi-playing-bars" aria-hidden="true"><span/><span/><span/></div>
-                      : <span className="qi-num">{String(i+1).padStart(2,'0')}</span>
+                      : <span className="qi-num">{String(index + 1).padStart(2,'0')}</span>
                     }
                   </div>
                   {/* Album art / Retro Disc icon */}
@@ -810,6 +829,9 @@ export default function App() {
                 </li>
               );
             })}
+            {filteredSongs.length === 0 && (
+              <li className="queue-empty-search">No songs found for “{playlistSearch}”</li>
+            )}
           </ul>
         </div>
       )}
