@@ -504,6 +504,26 @@ body {
   gap: 0;
 }
 
+/* Spotify playlist used only by the Deluxe Salon theme. */
+.salon-spotify-player {
+  position: relative;
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 0 0 18px;
+}
+
+.salon-spotify-embed {
+  display: block;
+  width: min(655px, calc(100vw - 32px));
+  height: min(352px, 40dvh);
+  min-height: 152px;
+  border: 0;
+  border-radius: 12px;
+  box-shadow: 0 10px 36px rgba(0,0,0,0.58), 0 0 20px rgba(255,91,153,0.16);
+}
+
 /* ── The actual pill card ── */
 .player-pill {
   width: min(655.2px, calc(100vw - 32px));
@@ -1821,6 +1841,7 @@ body {
   border-color: #f48caf;
   box-shadow: 0 0 0 1px rgba(255,175,204,0.28), 0 0 22px rgba(255,83,150,0.26), inset 0 1px 0 rgba(255,255,255,0.10);
 }
+.theme-salon .shayri-board { bottom: min(376px, calc(40dvh + 24px)); }
 .theme-salon .shayri-board::before { border-color: rgba(255,191,216,0.38); }
 .theme-salon .shayri-hi { color: #ffd2df; text-shadow: 0 0 12px rgba(255,86,153,0.55); }
 .theme-salon .shayri-deco,
@@ -1861,6 +1882,9 @@ body {
   .theme-options { min-width: 126px; padding: 3px; }
   .theme-option { padding: 6px 7px; gap: 5px; font-size: 0.57rem; }
   .salon-rain-toggle { padding: 3px 7px; font-size: 0.51rem; letter-spacing: 0.28px; }
+  .salon-spotify-player { padding-bottom: calc(env(safe-area-inset-bottom, 6px) + 8px); }
+  .salon-spotify-embed { width: calc(100vw - 14px); height: min(300px, 36dvh); }
+  .theme-salon .shayri-board { bottom: min(324px, calc(36dvh + 24px)); }
 }
 
 @media (prefers-reduced-motion: reduce) {

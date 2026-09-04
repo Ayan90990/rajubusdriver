@@ -172,6 +172,14 @@ export default function App() {
   const hornIndexRef = useRef(0);
   const { time, seconds } = useClock();
 
+  // Spotify owns playback in Salon mode, so stop any local MP3 when switching there.
+  useEffect(() => {
+    if (isSalon && audioRef.current) {
+      audioRef.current.pause();
+      setIsPlaying(false);
+    }
+  }, [isSalon]);
+
   // Keep hasStartedRef in sync
   useEffect(() => {
     hasStartedRef.current = hasStarted;
@@ -917,6 +925,7 @@ export default function App() {
         );
       })()}
 
+      {!isSalon ? (
       <footer className="player-bar" role="region" aria-label="Music player">
 
         {/* ── PILL CARD ── */}
@@ -1049,6 +1058,21 @@ export default function App() {
         )}
 
       </footer>
+      ) : (
+        <section className="salon-spotify-player" role="region" aria-label="Deluxe Salon Spotify playlist">
+          <iframe
+            title="Deluxe Salon Spotify playlist"
+            className="salon-spotify-embed"
+            src="https://open.spotify.com/embed/playlist/2AVjI8Z57bqMJVtU3V9X1Q?utm_source=generator&si=8e6510428cb64bfc"
+            width="100%"
+            height="352"
+            frameBorder="0"
+            allowFullScreen
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
+          />
+        </section>
+      )}
 
       {/* Download Modal */}
       {showDownloadModal && currentSong && (
