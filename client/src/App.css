@@ -1952,6 +1952,87 @@ body {
   transform: perspective(400px) rotateX(8deg);
 }
 
+.taxi-road-markings {
+  position: absolute;
+  left: -20%; right: -20%; bottom: 14%; height: 3px;
+  background: repeating-linear-gradient(90deg, transparent 0 10%, rgba(255,224,138,.68) 10% 15%, transparent 15% 24%);
+  opacity: .72;
+  filter: blur(.5px);
+  animation: taxiRoadMove 1.5s linear infinite;
+}
+
+.taxi-car {
+  position: absolute;
+  z-index: 1;
+  left: -30%;
+  bottom: 17%;
+  width: clamp(190px, 26vw, 360px);
+  height: clamp(86px, 12vw, 145px);
+  border-radius: 30px 42px 14px 14px;
+  background: linear-gradient(180deg, #ffd86b 0 16%, #e8a928 17% 68%, #161b21 69% 100%);
+  border: 3px solid rgba(255,233,157,.72);
+  box-shadow: 0 9px 0 rgba(3,7,12,.76), 0 0 30px rgba(255,191,48,.36), inset 0 5px 0 rgba(255,255,255,.26);
+  animation: taxiDrive 14s linear infinite;
+}
+
+.taxi-car::before {
+  content: '';
+  position: absolute;
+  left: 17%; top: -37%; width: 59%; height: 55%;
+  border-radius: 46px 55px 8px 8px;
+  background: linear-gradient(135deg, #1d4661 0 48%, #8ac5df 49% 52%, #173448 53% 100%);
+  border: 3px solid #f3c24b;
+  box-shadow: inset 0 0 18px rgba(112,214,255,.30);
+}
+
+.taxi-car::after {
+  content: '';
+  position: absolute;
+  top: 51%; left: 0; right: 0; height: 5px;
+  background: repeating-linear-gradient(90deg, #151a1f 0 22px, #f8c64d 22px 42px);
+  opacity: .78;
+}
+
+.taxi-sign {
+  position: absolute;
+  z-index: 2;
+  top: -49%; left: 41%;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: #f8ce58;
+  color: #171b21;
+  font: 900 0.62rem Arial, sans-serif;
+  letter-spacing: 1px;
+  box-shadow: 0 0 9px rgba(255,218,103,.78);
+}
+
+.taxi-window { position: absolute; z-index: 2; top: 15%; left: 24%; width: 48%; height: 28%; border-radius: 18px 24px 4px 4px; background: rgba(6,20,34,.72); border: 2px solid rgba(189,235,255,.42); }
+.taxi-headlight { position: absolute; z-index: 2; bottom: 17%; width: 12px; height: 9px; border-radius: 50%; background: #fff8b0; box-shadow: 0 0 18px 7px rgba(255,230,120,.78); }
+.taxi-headlight-left { left: 7%; }
+.taxi-headlight-right { right: 7%; }
+.taxi-wheel { position: absolute; z-index: 3; bottom: -18px; width: 38px; height: 38px; border-radius: 50%; background: radial-gradient(circle, #7e8791 0 22%, #171b20 24% 57%, #05070a 60%); border: 3px solid #212932; }
+.taxi-wheel-left { left: 16%; }
+.taxi-wheel-right { right: 16%; }
+
+@keyframes taxiDrive {
+  0% { transform: translateX(0) translateY(2px); }
+  48% { transform: translateX(74vw) translateY(-1px); }
+  52% { transform: translateX(80vw) translateY(-1px); }
+  100% { transform: translateX(150vw) translateY(2px); }
+}
+@keyframes taxiRoadMove { to { transform: translateX(16%); } }
+
+@media (max-width: 600px) {
+  .taxi-car { bottom: 18%; width: clamp(150px, 48vw, 245px); height: clamp(70px, 15vw, 110px); animation-duration: 12s; }
+  .taxi-wheel { width: 30px; height: 30px; bottom: -14px; }
+  .taxi-sign { font-size: .48rem; top: -47%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .taxi-car, .taxi-road-markings { animation: none; }
+  .taxi-car { left: 50%; transform: translateX(-50%); }
+}
+
 .theme-taxi .scene-overlay {
   background: linear-gradient(to bottom, rgba(3,9,17,.72) 0%, rgba(5,16,30,.16) 28%, rgba(4,12,22,.12) 55%, rgba(2,7,13,.78) 100%);
 }

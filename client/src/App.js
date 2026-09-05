@@ -500,7 +500,19 @@ export default function App() {
           }}
         />
       )}
-      {isTaxi && <div className="taxi-scene" aria-hidden="true" />}
+      {isTaxi && (
+        <div className="taxi-scene" aria-hidden="true">
+          <div className="taxi-road-markings" />
+          <div className="taxi-car">
+            <span className="taxi-sign">TAXI</span>
+            <span className="taxi-window" />
+            <span className="taxi-headlight taxi-headlight-left" />
+            <span className="taxi-headlight taxi-headlight-right" />
+            <span className="taxi-wheel taxi-wheel-left" />
+            <span className="taxi-wheel taxi-wheel-right" />
+          </div>
+        </div>
+      )}
       {/* Dark gradient overlay */}
       <div className="scene-overlay" aria-hidden="true" />
 
