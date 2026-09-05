@@ -1869,7 +1869,8 @@ body {
 
 /* Frosted glass finish shared by both Bus and Deluxe Salon themes. */
 .player-pill,
-.shayri-board {
+.shayri-board,
+.queue-panel {
   background: linear-gradient(135deg, rgba(255,255,255,0.16), rgba(255,255,255,0.055)) !important;
   border-color: rgba(255,255,255,0.27) !important;
   box-shadow:
@@ -1882,9 +1883,12 @@ body {
 
 .player-pill { position: relative; overflow: hidden; }
 .player-pill > * { position: relative; z-index: 1; }
+.queue-panel { background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.055)) !important; }
+.queue-panel > * { position: relative; z-index: 1; }
 
 .player-pill::before,
-.shayri-board::after {
+.shayri-board::after,
+.queue-panel::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -1894,7 +1898,8 @@ body {
 }
 
 .theme-salon .player-pill,
-.theme-salon .shayri-board {
+.theme-salon .shayri-board,
+.theme-salon .queue-panel {
   background: linear-gradient(135deg, rgba(255,174,207,0.20), rgba(75,20,57,0.30)) !important;
   border-color: rgba(255,216,231,0.36) !important;
 }
