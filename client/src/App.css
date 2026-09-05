@@ -1903,3 +1903,88 @@ body {
   background: linear-gradient(135deg, rgba(255,174,207,0.20), rgba(75,20,57,0.30)) !important;
   border-color: rgba(255,216,231,0.36) !important;
 }
+
+/* ── Midnight Taxi Radio theme ── */
+.app.theme-taxi {
+  --amber: #f4b942;
+  --amber2: #ffd166;
+  --dark: #08111e;
+  --dark2: #13263b;
+  --pink: #ff5f6d;
+  --teal: #70d6ff;
+  --player-bg: rgba(7,16,29,0.90);
+  background: #050a12;
+}
+
+.theme-taxi .scene-bg-img { opacity: 0; pointer-events: none; }
+
+.taxi-scene {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 50% 33%, rgba(42,75,112,0.52) 0%, rgba(10,24,42,0.36) 38%, transparent 68%),
+    linear-gradient(180deg, #071321 0%, #102944 48%, #070d16 100%);
+}
+
+/* Soft skyline, street lamps and wet-road reflections create a taxi-night scene
+   without another large image asset, keeping the theme fast on mobile. */
+.taxi-scene::before {
+  content: '';
+  position: absolute;
+  left: -3%; right: -3%; bottom: 22%; height: 34%;
+  background:
+    linear-gradient(90deg, transparent 0 3%, rgba(255,209,102,.18) 3.2% 4%, transparent 4.2% 8%, rgba(112,214,255,.22) 8.3% 10%, transparent 10.2% 15%, rgba(255,209,102,.16) 15.3% 17%, transparent 17.2% 23%, rgba(255,95,109,.20) 23.3% 25%, transparent 25.2% 31%, rgba(255,209,102,.17) 31.3% 33%, transparent 33.2% 40%, rgba(112,214,255,.18) 40.3% 42%, transparent 42.2% 49%, rgba(255,209,102,.2) 49.3% 51%, transparent 51.2% 57%, rgba(255,95,109,.18) 57.3% 59%, transparent 59.2% 67%, rgba(255,209,102,.16) 67.3% 69%, transparent 69.2% 77%, rgba(112,214,255,.2) 77.3% 79%, transparent 79.2% 86%, rgba(255,209,102,.18) 86.3% 88%, transparent 88.2%),
+    repeating-linear-gradient(90deg, rgba(4,10,18,.96) 0 6%, transparent 6% 9%);
+  filter: blur(2px);
+  opacity: .9;
+}
+
+.taxi-scene::after {
+  content: '';
+  position: absolute;
+  left: -10%; right: -10%; bottom: -9%; height: 39%;
+  background:
+    linear-gradient(165deg, transparent 0 48%, rgba(255,209,102,.20) 48.3% 48.8%, transparent 49.1%),
+    linear-gradient(15deg, transparent 0 52%, rgba(112,214,255,.15) 52.2% 52.7%, transparent 53%),
+    linear-gradient(180deg, rgba(8,16,28,0) 0%, rgba(2,7,13,.88) 36%, #03060b 100%);
+  transform: perspective(400px) rotateX(8deg);
+}
+
+.theme-taxi .scene-overlay {
+  background: linear-gradient(to bottom, rgba(3,9,17,.72) 0%, rgba(5,16,30,.16) 28%, rgba(4,12,22,.12) 55%, rgba(2,7,13,.78) 100%);
+}
+
+.theme-taxi .hero-title {
+  font-family: 'Baloo 2', sans-serif;
+  letter-spacing: .04em;
+  color: #fff4c7;
+  text-shadow: 0 0 22px rgba(255,209,102,.58), 0 2px 10px rgba(0,0,0,.8);
+}
+.theme-taxi .track-count-label { color: rgba(190,224,255,.78); }
+.theme-taxi .bus-badge,
+.theme-taxi .driver-avatar { background: #f4b942; box-shadow: 0 0 14px rgba(244,185,66,.55); }
+.theme-taxi .clock { text-shadow: 0 0 12px rgba(112,214,255,.58); }
+.theme-taxi .aboard-dot { background: #70d6ff; box-shadow: 0 0 8px #70d6ff; }
+.theme-taxi .theme-toggle { background: rgba(9,27,46,.72); border-color: rgba(112,214,255,.45); color: #e8f7ff; }
+.theme-taxi .theme-toggle:hover { background: rgba(28,86,119,.68); border-color: #ffd166; }
+.theme-taxi .theme-options { background: rgba(5,17,30,.96); border-color: rgba(112,214,255,.38); }
+.theme-taxi .theme-option.selected { background: rgba(244,185,66,.22); color: #ffe9a6; }
+.theme-taxi .shayri-board { border-color: rgba(112,214,255,.40) !important; }
+.theme-taxi .shayri-hi { color: #ffe7a1; text-shadow: 0 0 12px rgba(255,209,102,.45); }
+.theme-taxi .shayri-deco,
+.theme-taxi .shayri-refresh { color: #70d6ff; }
+.theme-taxi .shayri-refresh { border-color: rgba(112,214,255,.45); background: rgba(112,214,255,.12); }
+.theme-taxi .player-pill,
+.theme-taxi .queue-panel { background: linear-gradient(135deg, rgba(46,83,119,.30), rgba(6,17,30,.35)) !important; border-color: rgba(153,220,255,.38) !important; }
+.theme-taxi .pc.pc-play { background: linear-gradient(135deg, #ffe28a, #f4b942); color: #112238; }
+.theme-taxi .pill-art { border-color: rgba(255,224,138,.42); box-shadow: 0 0 0 3px rgba(244,185,66,.28); }
+.theme-taxi .p-fill { background: linear-gradient(90deg, #70d6ff, #ffd166); }
+.theme-taxi .taxi-seek-icon { font-size: 1.18rem; filter: drop-shadow(0 0 7px rgba(255,209,102,.9)); }
+
+@media (max-width: 600px) {
+  .taxi-scene::before { bottom: 23%; height: 30%; opacity: .72; }
+  .taxi-scene::after { height: 34%; }
+  .theme-taxi .hero-title { font-size: clamp(1.6rem, 7vw, 2.35rem); }
+}

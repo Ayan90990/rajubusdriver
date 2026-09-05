@@ -101,6 +101,8 @@ export default function App() {
   // Always start on the Bus theme; Salon is a temporary user-selected vibe.
   const [theme, setTheme] = useState('bus');
   const isSalon = theme === 'salon';
+  const isTaxi = theme === 'taxi';
+  const isSpecialTheme = isSalon || isTaxi;
 
   useEffect(() => {
     const dismissed = window.localStorage.getItem('installPromptDismissed');
@@ -498,6 +500,7 @@ export default function App() {
           }}
         />
       )}
+      {isTaxi && <div className="taxi-scene" aria-hidden="true" />}
       {/* Dark gradient overlay */}
       <div className="scene-overlay" aria-hidden="true" />
 
@@ -542,10 +545,10 @@ export default function App() {
       {/* ── Top bar ── */}
       <header className="top-bar" role="banner">
         <div className="top-left">
-          <div className="bus-badge" aria-hidden="true">{isSalon ? '✂️' : '🚌'}</div>
+          <div className="bus-badge" aria-hidden="true">{isSalon ? '✂️' : isTaxi ? '🚕' : '🚌'}</div>
           <div className="top-title-small">
-            <span>{isSalon ? '90s Romantic Salon' : 'राजू बस ड्राइवर'}</span>
-            <span>{isSalon ? 'LOVE SONGS &nbsp;·&nbsp; RETRO NIGHTS' : 'NH 48 &nbsp;·&nbsp; DELHI – MUMBAI'}</span>
+            <span>{isSalon ? '90s Romantic Salon' : isTaxi ? 'Midnight Taxi Radio' : 'राजू बस ड्राइवर'}</span>
+            <span>{isSalon ? 'LOVE SONGS &nbsp;·&nbsp; RETRO NIGHTS' : isTaxi ? 'CITY LIGHTS &nbsp;·&nbsp; NIGHT RIDES' : 'NH 48 &nbsp;·&nbsp; DELHI – MUMBAI'}</span>
           </div>
         </div>
 
@@ -559,14 +562,14 @@ export default function App() {
           </div>
           <div
             className="who-driving"
-            role={isSalon ? undefined : 'button'}
-            tabIndex={isSalon ? -1 : 0}
-            aria-label={isSalon ? '90s Romantic Salon' : "Who's driving?"}
-            onClick={() => !isSalon && setShowDriver(true)}
-            onKeyDown={e => !isSalon && e.key === 'Enter' && setShowDriver(true)}
+            role={isSpecialTheme ? undefined : 'button'}
+            tabIndex={isSpecialTheme ? -1 : 0}
+            aria-label={isSalon ? '90s Romantic Salon' : isTaxi ? 'Midnight Taxi Radio' : "Who's driving?"}
+            onClick={() => !isSpecialTheme && setShowDriver(true)}
+            onKeyDown={e => !isSpecialTheme && e.key === 'Enter' && setShowDriver(true)}
           >
-            <div className="driver-avatar" aria-hidden="true">{isSalon ? '💈' : '👨'}</div>
-            {isSalon ? 'Salon vibes' : "Who's driving?"}
+            <div className="driver-avatar" aria-hidden="true">{isSalon ? '💈' : isTaxi ? '🌃' : '👨'}</div>
+            {isSalon ? 'Salon vibes' : isTaxi ? 'Night ride' : "Who's driving?"}
           </div>
           <div className="theme-switcher">
             <button
@@ -582,9 +585,9 @@ export default function App() {
             {showThemeMenu && (
               <div className="theme-options" id="theme-options" role="menu" aria-label="Theme options">
                 <button
-                  className={`theme-option ${!isSalon ? 'selected' : ''}`}
+                  className={`theme-option ${theme === 'bus' ? 'selected' : ''}`}
                   role="menuitemradio"
-                  aria-checked={!isSalon}
+                  aria-checked={theme === 'bus'}
                   onClick={() => { setTheme('bus'); setSalonRainOn(false); setShowThemeMenu(false); }}
                 >
                   <span aria-hidden="true">🚌</span> Bus Driver
@@ -596,6 +599,14 @@ export default function App() {
                   onClick={() => { setTheme('salon'); setShowThemeMenu(false); }}
                 >
                   <span aria-hidden="true">✂️</span> Deluxe Salon
+                </button>
+                <button
+                  className={`theme-option ${isTaxi ? 'selected' : ''}`}
+                  role="menuitemradio"
+                  aria-checked={isTaxi}
+                  onClick={() => { setTheme('taxi'); setSalonRainOn(false); setShowThemeMenu(false); }}
+                >
+                  <span aria-hidden="true">🚕</span> Taxi Radio
                 </button>
               </div>
             )}
@@ -616,16 +627,16 @@ export default function App() {
 
       {/* ── Hero center ── */}
       <div className="hero-center">
-        <p className="track-count-label">{isSalon ? '90s ROMANTIC HITS · LOVE MIX' : `${songs.length} TRACKS · NON-STOP`}</p>
+        <p className="track-count-label">{isSalon ? '90s ROMANTIC HITS · LOVE MIX' : isTaxi ? 'MIDNIGHT TAXI HITS · CITY MIX' : `${songs.length} TRACKS · NON-STOP`}</p>
         <h1
           className="hero-title"
-          lang={isSalon ? 'en' : 'hi'}
-          aria-label={isSalon ? '90s Romantic Salon' : 'राजू बस ड्राइवर - Raju Bus Driver'}
+          lang={isSpecialTheme ? 'en' : 'hi'}
+          aria-label={isSalon ? '90s Romantic Salon' : isTaxi ? 'Midnight Taxi Radio' : 'राजू बस ड्राइवर - Raju Bus Driver'}
           onClick={handlePlayPause}
           style={{ cursor: 'pointer' }}
           title="Click to play / pause"
         >
-          {isSalon ? '90s Romantic Salon' : 'राजू बस ड्राइवर'}
+          {isSalon ? '90s Romantic Salon' : isTaxi ? 'Midnight Taxi Radio' : 'राजू बस ड्राइवर'}
         </h1>
 
         {!isPlaying && !isSalon && (
@@ -673,7 +684,7 @@ export default function App() {
       </div>
 
       {/* ── Bus scene — horn + lights + ticket buttons ── */}
-      {!isSalon && <div className="bus-scene">
+      {!isSpecialTheme && <div className="bus-scene">
         {/* Horn badge */}
         <button
           className={`horn-badge ${hornActive ? 'honking' : ''}`}
@@ -893,17 +904,23 @@ export default function App() {
           { hi: 'बालों की खुशबू, दिल का पुराना जादू', en: 'The scent of hair, the heart’s old magic' },
           { hi: 'बारिश की रात और दिल की बात', en: 'A rainy night and a conversation of hearts' },
         ];
-        const activeShayris = isSalon ? salonShayris : shayris;
+        const taxiShayris = [
+          { hi: 'शहर की रोशनी, रात की सवारी', en: 'City lights, a ride through the night' },
+          { hi: 'मीटर चला, दिल भी चला', en: 'The meter moved, and so did the heart' },
+          { hi: 'खिड़की के बाहर सपनों का शहर', en: 'A city of dreams outside the window' },
+          { hi: 'रात लंबी, रास्ते सुहाने', en: 'Long night, beautiful roads' },
+        ];
+        const activeShayris = isSalon ? salonShayris : isTaxi ? taxiShayris : shayris;
         const s = activeShayris[shayriIndex % activeShayris.length];
         return (
           <div className="shayri-board">
             <div className="shayri-content">
-              <span className="shayri-deco">{isSalon ? '♪' : '❝'}</span>
+              <span className="shayri-deco">{isSalon ? '♪' : isTaxi ? '✦' : '❝'}</span>
               <div className="shayri-text">
                 <p className="shayri-hi" lang="hi">{s.hi}</p>
                 <p className="shayri-en">{s.en}</p>
               </div>
-              <span className="shayri-deco">{isSalon ? '♡' : '❞'}</span>
+              <span className="shayri-deco">{isSalon ? '♡' : isTaxi ? '✦' : '❞'}</span>
             </div>
             <button
               className="shayri-refresh"
@@ -1025,11 +1042,11 @@ export default function App() {
             >
               <div className="p-fill" style={{ width: `${progress}%` }} />
               <div
-                className={`bus-seek-icon ${isSalon ? 'salon-seek-icon' : ''}`}
+                className={`bus-seek-icon ${isSalon ? 'salon-seek-icon' : isTaxi ? 'taxi-seek-icon' : ''}`}
                 style={{ left: `${progress}%` }}
-                title={isSalon ? `Seek song to ${formatTime(currentTime)}` : `Seek bus to ${formatTime(currentTime)}`}
+                title={isSalon || isTaxi ? `Seek song to ${formatTime(currentTime)}` : `Seek bus to ${formatTime(currentTime)}`}
               >
-                {isSalon ? '✂️' : '🚌'}
+                {isSalon ? '✂️' : isTaxi ? '🚕' : '🚌'}
               </div>
             </div>
             <span className="p-time right">{formatTime(duration)}</span>
