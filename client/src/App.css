@@ -1918,6 +1918,11 @@ body {
 
 .theme-taxi .scene-bg-img { opacity: 0; pointer-events: none; }
 
+/* The original Taxi gradient is disabled; the CSS night-sky scene below is the only backdrop. */
+.theme-taxi .taxi-scene { background: transparent; }
+.theme-taxi .taxi-scene::before,
+.theme-taxi .taxi-scene::after { display: none; }
+
 .taxi-scene {
   position: absolute;
   inset: 0;
