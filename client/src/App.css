@@ -1938,7 +1938,9 @@ body {
   position: absolute;
   inset: 0;
   overflow: hidden;
-  background: linear-gradient(180deg, #130a21 0%, #2b1055 60%, #4a1c6d 100%);
+  background:
+    radial-gradient(120% 58% at 70% 78%, rgba(255,196,107,.42), transparent 58%),
+    linear-gradient(180deg, #150c26 0%, #2a1444 22%, #6a2a60 55%, #bf4753 72%, #ee8642 86%, #ffc470 100%);
 }
 .moon {
   position: absolute;
@@ -2031,10 +2033,25 @@ body {
   position: absolute;
   left: 0; right: 0; bottom: 0; height: 23%;
   min-height: 80px;
-  background: linear-gradient(180deg, #353442 0%, #20202b 34%, #11131b 100%);
-  border-top: 4px dashed #fcd34d;
+  background: linear-gradient(180deg, #3a2150 0%, #2b1942 22%, #1f1233 100%);
+  border-top: 0;
   box-shadow: inset 0 15px 24px rgba(3,3,8,.35);
 }
+.road::before {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; top: 0; height: 11px;
+  background: repeating-linear-gradient(90deg, #f7e6d8 0 28px, #c9430f 28px 56px);
+  opacity: .72;
+}
+.road::after {
+  content: '';
+  position: absolute;
+  left: -20%; right: -20%; top: 54%; height: 7px;
+  background: repeating-linear-gradient(90deg, rgba(255,228,175,.86) 0 68px, transparent 68px 136px);
+  animation: taxiDashMove .5s linear infinite;
+}
+@keyframes taxiDashMove { to { transform: translateX(-136px); } }
 @keyframes starsTwinkle { from { opacity: .55; } to { opacity: 1; } }
 
 /* Soft skyline, street lamps and wet-road reflections create a taxi-night scene
