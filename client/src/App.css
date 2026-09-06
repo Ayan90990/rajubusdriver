@@ -1981,6 +1981,52 @@ body {
     repeating-linear-gradient(90deg, transparent 0 29px, rgba(255,215,114,.35) 30px 34px, transparent 35px 56px);
   box-shadow: 0 -14px 32px rgba(17,4,36,.55);
 }
+.lucknow-landmarks {
+  position: absolute;
+  left: 0; right: 0; bottom: 22%; height: 20%;
+  overflow: hidden;
+  z-index: 2;
+  pointer-events: none;
+}
+.landmark {
+  position: absolute;
+  bottom: 0;
+  left: -30%;
+  width: clamp(130px, 18vw, 230px);
+  height: clamp(70px, 10vw, 125px);
+  padding: 10px 8px 7px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  text-align: center;
+  color: rgba(255,225,145,.92);
+  font: 900 clamp(.48rem, .8vw, .7rem)/1.05 Arial, sans-serif;
+  letter-spacing: 1px;
+  white-space: nowrap;
+  background: linear-gradient(180deg, rgba(28,20,53,.68), rgba(12,9,26,.96));
+  border: 2px solid rgba(255,205,104,.58);
+  border-bottom: 0;
+  border-radius: 55% 55% 0 0;
+  box-shadow: 0 0 18px rgba(255,190,71,.18), inset 0 0 14px rgba(105,165,255,.12);
+  animation: landmarkDrive 20s linear infinite;
+}
+.landmark::before {
+  content: '';
+  position: absolute;
+  left: 17%; right: 17%; top: 18%; height: 34%;
+  border: 2px solid rgba(255,214,123,.52);
+  border-radius: 50% 50% 8px 8px;
+  background: repeating-linear-gradient(90deg, rgba(255,214,123,.35) 0 5px, transparent 5px 13px);
+}
+.landmark small { color: rgba(189,222,255,.78); font: 600 .62rem 'Noto Sans Devanagari', sans-serif; letter-spacing: .5px; margin-top: 4px; }
+.landmark-rumi { animation-delay: -5s; transform: scale(.84); }
+.landmark-imambara { animation-delay: -10s; transform: scale(.72); }
+.landmark-ghanta { animation-delay: -15s; transform: scale(.92); }
+@keyframes landmarkDrive {
+  0% { left: -30%; opacity: 0; }
+  8%, 84% { opacity: .92; }
+  100% { left: 112%; opacity: 0; }
+}
 .road {
   position: absolute;
   left: 0; right: 0; bottom: 0; height: 23%;

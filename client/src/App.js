@@ -506,6 +506,12 @@ export default function App() {
             <div className="moon" />
             <div className="stars" />
             <div className="skyline-buildings" />
+            <div className="lucknow-landmarks">
+              <span className="landmark landmark-charbagh">CHARBAGH <small>लखनऊ</small></span>
+              <span className="landmark landmark-rumi">RUMI DARWAZA <small>लखनऊ</small></span>
+              <span className="landmark landmark-imambara">BARA IMAMBARA <small>नवाबी शहर</small></span>
+              <span className="landmark landmark-ghanta">GHANTA GHAR <small>चौक</small></span>
+            </div>
             <div className="road" />
           </div>
           <div className="taxi-road-markings" />
