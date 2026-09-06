@@ -1989,6 +1989,7 @@ body {
   overflow: hidden;
   z-index: 2;
   pointer-events: none;
+  perspective: 900px;
 }
 .landmark {
   position: absolute;
@@ -2005,11 +2006,14 @@ body {
   font: 900 clamp(.48rem, .8vw, .7rem)/1.05 Arial, sans-serif;
   letter-spacing: 1px;
   white-space: nowrap;
-  background: linear-gradient(180deg, rgba(28,20,53,.68), rgba(12,9,26,.96));
+  transform-style: preserve-3d;
+  background:
+    linear-gradient(90deg, rgba(255,211,112,.18) 0 5%, transparent 5% 92%, rgba(0,0,0,.42) 92%),
+    linear-gradient(180deg, rgba(48,40,91,.88), rgba(12,9,26,.98));
   border: 2px solid rgba(255,205,104,.58);
   border-bottom: 0;
   border-radius: 55% 55% 0 0;
-  box-shadow: 0 0 18px rgba(255,190,71,.18), inset 0 0 14px rgba(105,165,255,.12);
+  box-shadow: 10px 10px 0 rgba(10,6,23,.38), 0 0 18px rgba(255,190,71,.22), inset 0 0 14px rgba(105,165,255,.16);
   animation: landmarkDrive 20s linear infinite;
 }
 .landmark::before {
@@ -2019,11 +2023,28 @@ body {
   border: 2px solid rgba(255,214,123,.52);
   border-radius: 50% 50% 8px 8px;
   background: repeating-linear-gradient(90deg, rgba(255,214,123,.35) 0 5px, transparent 5px 13px);
+  box-shadow: inset 0 -8px 10px rgba(0,0,0,.34), 0 0 9px rgba(255,211,112,.18);
 }
+.landmark::after {
+  content: '';
+  position: absolute;
+  right: -15px;
+  top: 10px;
+  width: 15px;
+  height: calc(100% - 10px);
+  transform: skewY(-27deg);
+  transform-origin: left top;
+  background: linear-gradient(180deg, rgba(79,65,132,.8), rgba(17,11,38,.98));
+  border: 2px solid rgba(255,205,104,.34);
+  border-left: 0;
+  filter: drop-shadow(6px 8px 3px rgba(0,0,0,.28));
+}
+.landmark small { text-shadow: 0 1px 3px #080512; }
 .landmark small { color: rgba(189,222,255,.78); font: 600 .62rem 'Noto Sans Devanagari', sans-serif; letter-spacing: .5px; margin-top: 4px; }
-.landmark-rumi { animation-delay: -5s; transform: scale(.84); }
-.landmark-imambara { animation-delay: -10s; transform: scale(.72); }
-.landmark-ghanta { animation-delay: -15s; transform: scale(.92); }
+.landmark-charbagh { transform: rotateY(-3deg) translateZ(10px); }
+.landmark-rumi { animation-delay: -5s; transform: rotateY(4deg) scale(.84) translateZ(-8px); }
+.landmark-imambara { animation-delay: -10s; transform: rotateY(-3deg) scale(.72) translateZ(-18px); }
+.landmark-ghanta { animation-delay: -15s; transform: rotateY(5deg) scale(.92) translateZ(4px); }
 @keyframes landmarkDrive {
   0% { left: -30%; opacity: 0; }
   8%, 84% { opacity: .92; }
