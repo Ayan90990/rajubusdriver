@@ -502,6 +502,12 @@ export default function App() {
       )}
       {isTaxi && (
         <div className="taxi-scene" aria-hidden="true">
+          <div className="sky-background">
+            <div className="moon" />
+            <div className="stars" />
+            <div className="skyline-buildings" />
+            <div className="road" />
+          </div>
           <div className="taxi-road-markings" />
           <div className="taxi-car">
             <span className="taxi-sign">TAXI</span>
