@@ -1934,6 +1934,18 @@ body {
 .theme-taxi .sky-background,
 .theme-taxi .taxi-road-markings,
 .theme-taxi .taxi-car { display: none; }
+.deluxe-auto-vehicle {
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  bottom: 39%;
+  width: clamp(180px, 27vw, 350px);
+  max-height: 30%;
+  object-fit: contain;
+  transform: translateX(-50%);
+  filter: drop-shadow(0 16px 12px rgba(4,10,17,.58));
+  pointer-events: none;
+}
 .theme-taxi .rain-canvas { display: none !important; }
 .theme-taxi .taxi-scene::before { display: none; }
 .theme-taxi .scene-overlay {
@@ -2232,4 +2244,5 @@ body {
   .taxi-scene::before { bottom: 23%; height: 30%; opacity: .72; }
   .taxi-scene::after { height: 34%; }
   .theme-taxi .hero-title { font-size: clamp(1.6rem, 7vw, 2.35rem); }
+  .deluxe-auto-vehicle { width: min(62vw, 270px); bottom: 39%; }
 }

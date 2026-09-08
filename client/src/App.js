@@ -518,6 +518,13 @@ export default function App() {
             </div>
             <div className="road" />
           </div>
+          <img
+            className="deluxe-auto-vehicle"
+            src={`${process.env.PUBLIC_URL}/images/auto-custom.svg`}
+            alt=""
+            aria-hidden="true"
+            draggable="false"
+          />
           <div className="taxi-road-markings" />
           <div className="taxi-car">
             <span className="taxi-sign">AUTO</span>
