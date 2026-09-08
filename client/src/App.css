@@ -1945,6 +1945,15 @@ body {
   transform: translateX(-50%);
   filter: drop-shadow(0 16px 12px rgba(4,10,17,.58));
   pointer-events: none;
+  animation: deluxeAutoDrive 14s ease-in-out infinite;
+}
+@keyframes deluxeAutoDrive {
+  0% { transform: translateX(-145vw) translateY(2px); }
+  12% { transform: translateX(-70vw) translateY(0); }
+  45% { transform: translateX(-50%) translateY(-2px); }
+  52% { transform: translateX(-50%) translateY(1px); }
+  88% { transform: translateX(70vw) translateY(0); }
+  100% { transform: translateX(145vw) translateY(2px); }
 }
 .theme-taxi .rain-canvas { display: none !important; }
 .theme-taxi .taxi-scene::before { display: none; }
@@ -2245,4 +2254,13 @@ body {
   .taxi-scene::after { height: 34%; }
   .theme-taxi .hero-title { font-size: clamp(1.6rem, 7vw, 2.35rem); }
   .deluxe-auto-vehicle { width: min(62vw, 270px); bottom: 39%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .deluxe-auto-vehicle { animation: none; transform: translateX(-50%); }
+}
+
+/* Keep the supplied Deluxe Auto image bright and free of the old night overlay. */
+.theme-taxi .scene-overlay {
+  background: linear-gradient(to bottom, rgba(5,18,28,.08), transparent 58%, rgba(2,8,14,.26) 100%);
 }
