@@ -1923,6 +1923,17 @@ body {
 .theme-taxi .taxi-scene::before,
 .theme-taxi .taxi-scene::after { display: none; }
 
+/* Deluxe Auto uses the supplied road illustration as its only Taxi backdrop. */
+.theme-taxi .taxi-scene {
+  background: #17212b url('/images/deluxe-auto-bg.png') center center / cover no-repeat;
+}
+.theme-taxi .sky-background,
+.theme-taxi .taxi-road-markings,
+.theme-taxi .taxi-car { display: none; }
+.theme-taxi .scene-overlay {
+  background: linear-gradient(to bottom, rgba(5,18,28,.28), rgba(5,12,20,.04) 52%, rgba(2,8,14,.58) 100%);
+}
+
 .taxi-scene {
   position: absolute;
   inset: 0;

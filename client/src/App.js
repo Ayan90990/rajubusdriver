@@ -516,7 +516,7 @@ export default function App() {
           </div>
           <div className="taxi-road-markings" />
           <div className="taxi-car">
-            <span className="taxi-sign">TAXI</span>
+            <span className="taxi-sign">AUTO</span>
             <span className="taxi-window" />
             <span className="taxi-headlight taxi-headlight-left" />
             <span className="taxi-headlight taxi-headlight-right" />
@@ -571,8 +571,8 @@ export default function App() {
         <div className="top-left">
           <div className="bus-badge" aria-hidden="true">{isSalon ? '✂️' : isTaxi ? '🚕' : '🚌'}</div>
           <div className="top-title-small">
-            <span>{isSalon ? '90s Romantic Salon' : isTaxi ? 'Midnight Taxi Radio' : 'राजू बस ड्राइवर'}</span>
-            <span>{isSalon ? 'LOVE SONGS &nbsp;·&nbsp; RETRO NIGHTS' : isTaxi ? 'CITY LIGHTS &nbsp;·&nbsp; NIGHT RIDES' : 'NH 48 &nbsp;·&nbsp; DELHI – MUMBAI'}</span>
+            <span>{isSalon ? '90s Romantic Salon' : isTaxi ? 'Deluxe Auto' : 'राजू बस ड्राइवर'}</span>
+            <span>{isSalon ? 'LOVE SONGS &nbsp;·&nbsp; RETRO NIGHTS' : isTaxi ? 'OPEN ROAD &nbsp;·&nbsp; DESI RIDES' : 'NH 48 &nbsp;·&nbsp; DELHI – MUMBAI'}</span>
           </div>
         </div>
 
@@ -588,12 +588,12 @@ export default function App() {
             className="who-driving"
             role={isSpecialTheme ? undefined : 'button'}
             tabIndex={isSpecialTheme ? -1 : 0}
-            aria-label={isSalon ? '90s Romantic Salon' : isTaxi ? 'Midnight Taxi Radio' : "Who's driving?"}
+            aria-label={isSalon ? '90s Romantic Salon' : isTaxi ? 'Deluxe Auto' : "Who's driving?"}
             onClick={() => !isSpecialTheme && setShowDriver(true)}
             onKeyDown={e => !isSpecialTheme && e.key === 'Enter' && setShowDriver(true)}
           >
             <div className="driver-avatar" aria-hidden="true">{isSalon ? '💈' : isTaxi ? '🌃' : '👨'}</div>
-            {isSalon ? 'Salon vibes' : isTaxi ? 'Night ride' : "Who's driving?"}
+            {isSalon ? 'Salon vibes' : isTaxi ? 'Auto vibes' : "Who's driving?"}
           </div>
           <div className="theme-switcher">
             <button
@@ -630,7 +630,7 @@ export default function App() {
                   aria-checked={isTaxi}
                   onClick={() => { setTheme('taxi'); setSalonRainOn(false); setShowThemeMenu(false); }}
                 >
-                  <span aria-hidden="true">🚕</span> Taxi Radio
+                  <span aria-hidden="true">🛺</span> Deluxe Auto
                 </button>
               </div>
             )}
@@ -651,16 +651,16 @@ export default function App() {
 
       {/* ── Hero center ── */}
       <div className="hero-center">
-        <p className="track-count-label">{isSalon ? '90s ROMANTIC HITS · LOVE MIX' : isTaxi ? 'MIDNIGHT TAXI HITS · CITY MIX' : `${songs.length} TRACKS · NON-STOP`}</p>
+        <p className="track-count-label">{isSalon ? '90s ROMANTIC HITS · LOVE MIX' : isTaxi ? 'DELUXE AUTO HITS · ROAD MIX' : `${songs.length} TRACKS · NON-STOP`}</p>
         <h1
           className="hero-title"
           lang={isSpecialTheme ? 'en' : 'hi'}
-          aria-label={isSalon ? '90s Romantic Salon' : isTaxi ? 'Midnight Taxi Radio' : 'राजू बस ड्राइवर - Raju Bus Driver'}
+          aria-label={isSalon ? '90s Romantic Salon' : isTaxi ? 'Deluxe Auto' : 'राजू बस ड्राइवर - Raju Bus Driver'}
           onClick={handlePlayPause}
           style={{ cursor: 'pointer' }}
           title="Click to play / pause"
         >
-          {isSalon ? '90s Romantic Salon' : isTaxi ? 'Midnight Taxi Radio' : 'राजू बस ड्राइवर'}
+          {isSalon ? '90s Romantic Salon' : isTaxi ? 'Deluxe Auto' : 'राजू बस ड्राइवर'}
         </h1>
 
         {!isPlaying && !isSalon && (
