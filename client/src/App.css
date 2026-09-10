@@ -1938,7 +1938,7 @@ body {
   position: absolute;
   z-index: 3;
   left: 50%;
-  bottom: 27%;
+  bottom: 19%;
   width: clamp(180px, 27vw, 350px);
   max-height: 30%;
   object-fit: contain;
@@ -2253,7 +2253,7 @@ body {
   .taxi-scene::before { bottom: 23%; height: 30%; opacity: .72; }
   .taxi-scene::after { height: 34%; }
   .theme-taxi .hero-title { font-size: clamp(1.6rem, 7vw, 2.35rem); }
-  .deluxe-auto-vehicle { width: min(62vw, 270px); bottom: 27%; }
+  .deluxe-auto-vehicle { width: min(62vw, 270px); bottom: 19%; }
 }
 
 @media (prefers-reduced-motion: reduce) {
