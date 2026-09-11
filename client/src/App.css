@@ -1927,9 +1927,14 @@ body {
 .theme-taxi .taxi-scene {
   background-color: #17212b;
   background-position: center center;
-  background-size: cover;
+  background-size: 120% 120%;
   background-repeat: no-repeat;
   filter: saturate(1.12) contrast(1.08) brightness(1.04);
+  animation: deluxeAutoWorld 12s linear infinite alternate;
+}
+@keyframes deluxeAutoWorld {
+  0% { background-position: 42% center; }
+  100% { background-position: 58% center; }
 }
 .theme-taxi .sky-background,
 .theme-taxi .taxi-road-markings,
@@ -2249,11 +2254,14 @@ body {
   .taxi-scene::before { bottom: 23%; height: 30%; opacity: .72; }
   .taxi-scene::after { height: 34%; }
   .theme-taxi .hero-title { font-size: clamp(1.6rem, 7vw, 2.35rem); }
+  .theme-taxi .taxi-scene { background-size: 145% 120%; animation-duration: 9s; }
   .deluxe-auto-vehicle { width: min(62vw, 270px); bottom: 19%; animation-duration: 1.05s; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .deluxe-auto-vehicle { animation: none; transform: translateX(-50%); }
+  .theme-taxi .taxi-scene,
+  .deluxe-auto-vehicle { animation: none; }
+  .deluxe-auto-vehicle { transform: translateX(-50%); }
 }
 
 /* Keep the supplied Deluxe Auto image bright and free of the old night overlay. */
