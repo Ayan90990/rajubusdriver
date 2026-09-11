@@ -2273,7 +2273,8 @@ body {
   .taxi-scene::before { bottom: 23%; height: 30%; opacity: .72; }
   .taxi-scene::after { height: 34%; }
   .theme-taxi .hero-title { font-size: clamp(1.6rem, 7vw, 2.35rem); }
-  .theme-taxi .taxi-scene { background-size: 145% 120%; animation-duration: 9s; }
+  .theme-taxi .sky-background::before { animation-duration: 18s; }
+  .theme-taxi .sky-background::after { animation-duration: 14s; }
   .deluxe-auto-vehicle { width: min(62vw, 270px); bottom: 19%; animation-duration: 1.05s; }
 }
 
