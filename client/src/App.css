@@ -1923,22 +1923,41 @@ body {
 .theme-taxi .taxi-scene::before,
 .theme-taxi .taxi-scene::after { display: none; }
 
-/* Deluxe Auto uses the supplied road illustration as its only Taxi backdrop. */
+/* Deluxe Auto uses editable parallax layers instead of a single flat image. */
 .theme-taxi .taxi-scene {
-  background-color: #17212b;
-  background-position: center center;
-  background-size: 120% 120%;
-  background-repeat: no-repeat;
-  filter: saturate(1.12) contrast(1.08) brightness(1.04);
-  animation: deluxeAutoWorld 12s linear infinite alternate;
+  background: #17212b;
+  filter: saturate(1.08) contrast(1.04) brightness(1.03);
 }
-@keyframes deluxeAutoWorld {
-  0% { background-position: 42% center; }
-  100% { background-position: 58% center; }
+.theme-taxi .sky-background { display: block; background: linear-gradient(180deg, #2b6aa5 0%, #57a9dc 43%, #a9d9e5 65%, #d5c98f 67%, #39434a 68%, #242b31 100%); }
+.theme-taxi .sky-background::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 32%;
+  background: radial-gradient(ellipse 48px 20px at 13% 28%, #fff 0 52%, transparent 55%), radial-gradient(ellipse 58px 23px at 16% 27%, #fff 0 50%, transparent 54%), radial-gradient(ellipse 52px 20px at 38% 18%, #fff 0 50%, transparent 54%), radial-gradient(ellipse 46px 18px at 61% 24%, #fff 0 50%, transparent 54%), radial-gradient(ellipse 62px 22px at 88% 26%, #fff 0 50%, transparent 54%), radial-gradient(circle at 82% 20%, #fffdf0 0 18px, rgba(255,245,180,.45) 20px, transparent 58px);
+  background-size: 125% 100%;
+  animation: deluxeCloudDrift 24s linear infinite;
+  opacity: .9;
 }
-.theme-taxi .sky-background,
+.theme-taxi .sky-background::after {
+  content: '';
+  position: absolute;
+  left: -8%; right: -8%; bottom: 28%; height: 23%;
+  background: linear-gradient(165deg, transparent 0 37%, #4d9b68 38% 64%, transparent 65%), linear-gradient(176deg, transparent 0 45%, #317c58 46% 72%, transparent 73%), linear-gradient(180deg, #6dad70 0 44%, #4b9464 45% 100%);
+  clip-path: polygon(0 48%, 9% 28%, 20% 40%, 32% 14%, 43% 34%, 57% 9%, 69% 33%, 82% 18%, 100% 34%, 100% 100%, 0 100%);
+  animation: deluxeHillDrift 18s linear infinite alternate;
+}
+@keyframes deluxeCloudDrift { from { transform: translateX(0); } to { transform: translateX(-7%); } }
+@keyframes deluxeHillDrift { from { transform: translateX(0) scaleX(1.02); } to { transform: translateX(-5%) scaleX(1.06); } }
+.theme-taxi .moon,
+.theme-taxi .stars,
+.theme-taxi .lucknow-landmarks,
+.theme-taxi .skyline-buildings,
 .theme-taxi .taxi-road-markings,
 .theme-taxi .taxi-car { display: none; }
+.theme-taxi .road { height: 31%; bottom: 0; background: linear-gradient(180deg, #3d464b 0%, #293137 26%, #20282e 100%); }
+.theme-taxi .road::before { top: 0; height: 4px; background: #e3c34d; opacity: .9; }
+.theme-taxi .road::after { top: 65%; height: 7px; background: repeating-linear-gradient(90deg, #f1f1e8 0 62px, transparent 62px 122px); animation: deluxeRoadMove .72s linear infinite; }
+@keyframes deluxeRoadMove { to { transform: translateX(-122px); } }
 .deluxe-auto-vehicle {
   position: absolute;
   z-index: 3;

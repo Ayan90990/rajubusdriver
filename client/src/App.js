@@ -501,11 +501,7 @@ export default function App() {
         />
       )}
       {isTaxi && (
-        <div
-          className="taxi-scene"
-          aria-hidden="true"
-          style={{ backgroundImage: `url('${process.env.PUBLIC_URL}/images/deluxe-auto-bg.png')` }}
-        >
+        <div className="taxi-scene" aria-hidden="true">
           <div className="sky-background">
             <div className="moon" />
             <div className="stars" />
