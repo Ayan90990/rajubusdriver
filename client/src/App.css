@@ -1967,7 +1967,7 @@ body {
   z-index: 3;
   left: 50%;
   bottom: 19%;
-  width: clamp(180px, 27vw, 350px);
+  width: clamp(220px, 34vw, 430px);
   max-height: 30%;
   object-fit: contain;
   transform: translateX(-50%);
@@ -1975,6 +1975,30 @@ body {
   pointer-events: none;
   animation: deluxeAutoRide 1.15s ease-in-out infinite;
 }
+.auto-horn-badge {
+  position: absolute;
+  z-index: 8;
+  right: 4%;
+  bottom: 30%;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 13px 7px 10px;
+  border: 1.5px solid rgba(255,255,255,.30);
+  border-radius: 24px;
+  background: rgba(14,8,0,.78);
+  color: #fff;
+  cursor: pointer;
+  pointer-events: all;
+  box-shadow: 0 4px 20px rgba(0,0,0,.50), 0 0 16px rgba(255,196,76,.22);
+  backdrop-filter: blur(7px);
+}
+.auto-horn-badge:hover { background: rgba(200,116,26,.48); }
+.auto-horn-badge .horn-icon { font-size: 1.05rem; }
+.auto-horn-badge .horn-text { display: flex; flex-direction: column; line-height: 1.1; }
+.auto-horn-badge .horn-eng { font: 800 .62rem 'Baloo 2', sans-serif; letter-spacing: 1px; white-space: nowrap; }
+.auto-horn-badge.honking { animation: hornShake .18s ease-in-out 3; box-shadow: 0 0 22px rgba(255,210,90,.8); }
+@keyframes hornShake { 25% { transform: translateX(-3px) rotate(-1deg); } 75% { transform: translateX(3px) rotate(1deg); } }
 @keyframes deluxeAutoRide {
   0%, 100% { transform: translateX(-50%) translateY(0) rotate(-.15deg); }
   50% { transform: translateX(-50%) translateY(-4px) rotate(.15deg); }
@@ -2279,7 +2303,9 @@ body {
   .theme-taxi .hero-title { font-size: clamp(1.6rem, 7vw, 2.35rem); }
   .theme-taxi .sky-background::before { animation-duration: 18s; }
   .theme-taxi .sky-background::after { animation-duration: 14s; }
-  .deluxe-auto-vehicle { width: min(62vw, 270px); bottom: 19%; animation-duration: 1.05s; }
+  .deluxe-auto-vehicle { width: min(72vw, 320px); bottom: 19%; animation-duration: 1.05s; }
+  .auto-horn-badge { right: 3%; bottom: 31%; padding: 5px 8px; }
+  .auto-horn-badge .horn-eng { font-size: .50rem; letter-spacing: .6px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -528,6 +528,14 @@ export default function App() {
             aria-hidden="true"
             draggable="false"
           />
+          <button
+            className={`auto-horn-badge ${hornActive ? 'honking' : ''}`}
+            onClick={blowHorn}
+            aria-label="Honk horn - Horn OK Please"
+          >
+            <span className="horn-icon">📯</span>
+            <span className="horn-text"><span className="horn-eng">HORN OK PLEASEEEE</span></span>
+          </button>
           <div className="taxi-road-markings" />
           <div className="taxi-car">
             <span className="taxi-sign">AUTO</span>
