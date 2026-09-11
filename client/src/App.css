@@ -1929,15 +1929,19 @@ body {
   filter: saturate(1.08) contrast(1.04) brightness(1.03);
 }
 .theme-taxi .sky-background { display: block; background: linear-gradient(180deg, #2b6aa5 0%, #57a9dc 43%, #a9d9e5 65%, #d5c98f 67%, #39434a 68%, #242b31 100%); }
-.theme-taxi .sky-background::before {
-  content: '';
-  position: absolute;
-  inset: 0 0 32%;
-  background: radial-gradient(ellipse 48px 20px at 13% 28%, #fff 0 52%, transparent 55%), radial-gradient(ellipse 58px 23px at 16% 27%, #fff 0 50%, transparent 54%), radial-gradient(ellipse 52px 20px at 38% 18%, #fff 0 50%, transparent 54%), radial-gradient(ellipse 46px 18px at 61% 24%, #fff 0 50%, transparent 54%), radial-gradient(ellipse 62px 22px at 88% 26%, #fff 0 50%, transparent 54%), radial-gradient(circle at 82% 20%, #fffdf0 0 18px, rgba(255,245,180,.45) 20px, transparent 58px);
-  background-size: 125% 100%;
-  animation: deluxeCloudDrift 24s linear infinite;
-  opacity: .9;
-}
+.theme-taxi .sky-background::before { display: none; }
+.deluxe-sun { position: absolute; z-index: 1; top: 13%; right: 13%; width: clamp(48px, 7vw, 92px); aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #fff 0 18%, #fffced 30%, #ffe49a 62%, #ffbe55 78%, #ff9f34 100%); box-shadow: 0 0 18px 8px rgba(255,229,139,.62), 0 0 70px 18px rgba(255,190,77,.42), inset -10px -9px 16px rgba(225,133,38,.18); animation: deluxeSunPulse 5s ease-in-out infinite alternate; }
+.deluxe-sun::after { content: ''; position: absolute; inset: -35%; border-radius: 50%; background: radial-gradient(circle, rgba(255,232,151,.28), transparent 67%); }
+.deluxe-clouds { position: absolute; z-index: 2; inset: 5% 0 38%; animation: deluxeCloudDrift 24s linear infinite; }
+.deluxe-cloud { position: absolute; width: clamp(78px, 10vw, 150px); height: clamp(25px, 3vw, 43px); border-radius: 999px; background: linear-gradient(180deg, #fff 0%, #f8fbff 48%, #c8d9e7 100%); box-shadow: inset -10px -7px 13px rgba(105,137,160,.28), 0 10px 12px rgba(37,81,106,.18); filter: drop-shadow(0 3px 5px rgba(34,79,105,.18)); }
+.deluxe-cloud::before, .deluxe-cloud::after { content: ''; position: absolute; bottom: 35%; border-radius: 50%; background: inherit; box-shadow: inset -7px -5px 9px rgba(105,137,160,.22); }
+.deluxe-cloud::before { left: 13%; width: 43%; height: 125%; }
+.deluxe-cloud::after { right: 13%; width: 48%; height: 145%; }
+.cloud-one { left: 10%; top: 27%; transform: scale(.78); }
+.cloud-two { left: 34%; top: 7%; transform: scale(.66); }
+.cloud-three { left: 57%; top: 22%; transform: scale(.9); }
+.cloud-four { right: 4%; top: 30%; transform: scale(.72); }
+@keyframes deluxeSunPulse { from { transform: scale(.98); } to { transform: scale(1.04); } }
 .theme-taxi .sky-background::after {
   content: '';
   position: absolute;

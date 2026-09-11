@@ -503,6 +503,13 @@ export default function App() {
       {isTaxi && (
         <div className="taxi-scene" aria-hidden="true">
           <div className="sky-background">
+            <div className="deluxe-sun" />
+            <div className="deluxe-clouds" aria-hidden="true">
+              <span className="deluxe-cloud cloud-one" />
+              <span className="deluxe-cloud cloud-two" />
+              <span className="deluxe-cloud cloud-three" />
+              <span className="deluxe-cloud cloud-four" />
+            </div>
             <div className="moon" />
             <div className="stars" />
             <div className="skyline-buildings" />
