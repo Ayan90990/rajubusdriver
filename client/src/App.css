@@ -1945,15 +1945,11 @@ body {
   transform: translateX(-50%);
   filter: drop-shadow(0 16px 12px rgba(4,10,17,.58));
   pointer-events: none;
-  animation: deluxeAutoDrive 14s ease-in-out infinite;
+  animation: deluxeAutoRide 1.15s ease-in-out infinite;
 }
-@keyframes deluxeAutoDrive {
-  0% { transform: translateX(-145vw) translateY(2px); }
-  12% { transform: translateX(-70vw) translateY(0); }
-  45% { transform: translateX(-50%) translateY(-2px); }
-  52% { transform: translateX(-50%) translateY(1px); }
-  88% { transform: translateX(70vw) translateY(0); }
-  100% { transform: translateX(145vw) translateY(2px); }
+@keyframes deluxeAutoRide {
+  0%, 100% { transform: translateX(-50%) translateY(0) rotate(-.15deg); }
+  50% { transform: translateX(-50%) translateY(-4px) rotate(.15deg); }
 }
 .theme-taxi .rain-canvas { display: none !important; }
 .theme-taxi .taxi-scene::before { display: none; }
@@ -2253,7 +2249,7 @@ body {
   .taxi-scene::before { bottom: 23%; height: 30%; opacity: .72; }
   .taxi-scene::after { height: 34%; }
   .theme-taxi .hero-title { font-size: clamp(1.6rem, 7vw, 2.35rem); }
-  .deluxe-auto-vehicle { width: min(62vw, 270px); bottom: 19%; }
+  .deluxe-auto-vehicle { width: min(62vw, 270px); bottom: 19%; animation-duration: 1.05s; }
 }
 
 @media (prefers-reduced-motion: reduce) {
