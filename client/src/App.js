@@ -91,6 +91,7 @@ export default function App() {
   const [lightsOn, setLightsOn] = useState(true);
   const [showTicket, setShowTicket] = useState(false);
   const [showDownloadModal, setShowDownloadModal] = useState(false);
+  const [showSupport, setShowSupport] = useState(false);
   const [showDriver, setShowDriver] = useState(false);
   const [aboard, setAboard] = useState(1);
   const [songError, setSongError] = useState(null);
@@ -599,8 +600,13 @@ export default function App() {
         </div>
 
         <div className="top-right">
-          <div className="clock" aria-label={`Current time: ${time}`}>
-            {time}<sup>{seconds}</sup>
+          <div className="time-support-row">
+            <button className="support-btn" onClick={() => setShowSupport(true)} aria-label="Support and donate" title="Support this website">
+              ♡ Support
+            </button>
+            <div className="clock" aria-label={`Current time: ${time}`}>
+              {time}<sup>{seconds}</sup>
+            </div>
           </div>
           <div className="aboard-row">
             <span className="aboard-dot" aria-hidden="true" />
@@ -1112,6 +1118,18 @@ export default function App() {
         )}
 
       </footer>
+
+      {showSupport && (
+        <div className="support-modal-overlay" onClick={() => setShowSupport(false)}>
+          <div className="support-modal-card" onClick={e => e.stopPropagation()} role="dialog" aria-modal="true" aria-label="Support and donate">
+            <button className="modal-close-btn" onClick={() => setShowSupport(false)} aria-label="Close">✕</button>
+            <div className="support-modal-header"><span>♡</span><h3>Support Deluxe Playlist</h3></div>
+            <p className="support-copy">Agar aapko website pasand aaye, PhonePe se support kar sakte hain.</p>
+            <img className="support-qr" src={`${process.env.PUBLIC_URL}/images/support-qr.jpg`} alt="PhonePe donation QR code" />
+            <p className="support-name">MD ARIF AHMAD · Scan &amp; Pay</p>
+          </div>
+        </div>
+      )}
 
       {/* Download Modal */}
       {showDownloadModal && currentSong && (

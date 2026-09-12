@@ -268,6 +268,33 @@ body {
 /* Lift the Bus title stack without moving Salon or Deluxe Auto content. */
 .app.theme-bus .hero-center { transform: translateY(-24px); }
 
+.time-support-row { display: flex; align-items: center; gap: 10px; }
+.support-btn {
+  border: 1px solid rgba(255,214,128,.48);
+  border-radius: 999px;
+  padding: 4px 8px;
+  background: rgba(20,10,0,.58);
+  color: #ffe3a1;
+  font: 700 .58rem 'Baloo 2', sans-serif;
+  letter-spacing: .35px;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: background .2s, transform .2s;
+}
+.support-btn:hover { background: rgba(200,116,26,.42); transform: translateY(-1px); }
+.support-modal-overlay { position: fixed; inset: 0; z-index: 120; display: flex; align-items: center; justify-content: center; padding: 18px; background: rgba(4,2,8,.78); backdrop-filter: blur(12px); }
+.support-modal-card { position: relative; width: min(360px, 92vw); padding: 22px 20px 18px; border: 1px solid rgba(255,214,128,.38); border-radius: 22px; background: linear-gradient(145deg, rgba(40,24,8,.98), rgba(16,9,20,.98)); box-shadow: 0 18px 60px rgba(0,0,0,.65); text-align: center; }
+.support-modal-header { display: flex; align-items: center; justify-content: center; gap: 8px; color: #ffe09a; }
+.support-modal-header span { font-size: 1.5rem; }
+.support-modal-header h3 { font: 800 1.15rem 'Baloo 2', sans-serif; margin: 0; }
+.support-copy { margin: 7px auto 13px; color: rgba(255,255,255,.68); font-size: .74rem; line-height: 1.35; }
+.support-qr { display: block; width: min(270px, 78vw); aspect-ratio: 1; object-fit: contain; margin: 0 auto; border-radius: 10px; background: #090909; }
+.support-name { margin: 11px 0 0; color: #fff0c6; font: 700 .68rem 'Baloo 2', sans-serif; letter-spacing: .7px; }
+.theme-salon .support-btn { border-color: rgba(255,184,210,.55); background: rgba(81,12,48,.62); color: #ffe6ef; }
+.theme-salon .support-modal-card { border-color: rgba(255,184,210,.4); background: linear-gradient(145deg, rgba(57,8,35,.98), rgba(19,3,14,.98)); }
+.theme-taxi .support-btn { border-color: rgba(112,214,255,.55); background: rgba(9,27,46,.72); color: #e8f7ff; }
+.theme-taxi .support-modal-card { border-color: rgba(112,214,255,.4); background: linear-gradient(145deg, rgba(11,35,57,.98), rgba(5,12,23,.98)); }
+
 /* Keep the shayri board compact so it never competes with the music player. */
 .shayri-board {
   max-width: 400px;
@@ -1099,6 +1126,8 @@ body {
 
 @media (max-width: 600px) {
   .app.theme-bus .hero-center { transform: translateY(-12px); }
+  .time-support-row { gap: 5px; }
+  .support-btn { padding: 3px 6px; font-size: .49rem; }
   .shayri-board { width: calc(100vw - 46px); padding: 3px 7px; gap: 4px; }
   .shayri-deco { font-size: .9rem; }
   .shayri-hi { font-size: .62rem; }
