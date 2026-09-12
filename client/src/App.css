@@ -246,6 +246,13 @@ body {
   padding: 0 24px;
 }
 
+/* Keep the Bus horn under the right-side Ticket/Lights stack. */
+.bus-scene > .horn-badge {
+  position: absolute;
+  right: 24px;
+  top: calc(100% + 8px);
+}
+
 /* Right side buttons group */
 .bus-right-btns {
   display: flex;
@@ -1094,6 +1101,7 @@ body {
   .who-driving { gap: 4px; font-size: 0.56rem; }
   .driver-avatar { width: 23px; height: 23px; font-size: 0.8rem; }
   .bus-scene { top: 44%; padding: 0 8px; gap: 6px; }
+  .bus-scene > .horn-badge { right: 8px; top: calc(100% + 6px); }
   .horn-badge { padding: 4px 7px; gap: 6px; border-radius: 19px; }
   .horn-badge .horn-icon { font-size: 0.92rem; }
   .horn-badge .horn-hindi { font-size: 0.58rem; }
