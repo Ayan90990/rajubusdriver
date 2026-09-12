@@ -265,6 +265,9 @@ body {
 .bus-scene .horn-badge .horn-eng,
 .bus-scene .light-btn-text span:last-child { font-size: .51rem; letter-spacing: 1px; }
 
+/* Lift the Bus title stack without moving Salon or Deluxe Auto content. */
+.app.theme-bus .hero-center { transform: translateY(-24px); }
+
 /* Right side buttons group */
 .bus-right-btns {
   display: flex;
@@ -1083,6 +1086,7 @@ body {
 }
 
 @media (max-width: 600px) {
+  .app.theme-bus .hero-center { transform: translateY(-12px); }
   .scene-bg-img {
     inset: auto;
     top: 55%;
