@@ -252,6 +252,18 @@ body {
   right: 24px;
   top: calc(100% + 8px);
 }
+.bus-scene .horn-badge,
+.bus-scene .light-btn {
+  padding: 4px 10px 4px 8px;
+  gap: 6px;
+  border-radius: 18px;
+}
+.bus-scene .horn-badge .horn-icon,
+.bus-scene .light-bulb-icon { font-size: .86rem; }
+.bus-scene .horn-badge .horn-hindi,
+.bus-scene .light-btn-text span:first-child { font-size: .54rem; }
+.bus-scene .horn-badge .horn-eng,
+.bus-scene .light-btn-text span:last-child { font-size: .51rem; letter-spacing: 1px; }
 
 /* Right side buttons group */
 .bus-right-btns {
