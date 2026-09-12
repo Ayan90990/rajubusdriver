@@ -1124,9 +1124,20 @@ export default function App() {
           <div className="support-modal-card" onClick={e => e.stopPropagation()} role="dialog" aria-modal="true" aria-label="Support and donate">
             <button className="modal-close-btn" onClick={() => setShowSupport(false)} aria-label="Close">✕</button>
             <div className="support-modal-header"><span>♡</span><h3>Support Deluxe Playlist</h3></div>
-            <p className="support-copy">Agar aapko website pasand aaye, PhonePe se support kar sakte hain.</p>
-            <img className="support-qr" src={`${process.env.PUBLIC_URL}/images/support-qr.jpg`} alt="PhonePe donation QR code" />
-            <p className="support-name">MD ARIF AHMAD · Scan &amp; Pay</p>
+            <p className="support-copy">Website pasand aaye to apni marzi se support/donate kar sakte hain. PhonePe ya Paytm/UPI app se QR scan karein.</p>
+            <div className="support-qr-grid">
+              <div className="support-qr-item">
+                <img className="support-qr" src={`${process.env.PUBLIC_URL}/images/support-qr.jpg`} alt="PhonePe donation QR code" />
+                <span>PhonePe</span>
+                <a className="support-download" href={`${process.env.PUBLIC_URL}/images/support-qr.jpg`} download="deluxe-playlist-phonepe-qr.jpg">Download QR</a>
+              </div>
+              <div className="support-qr-item">
+                <img className="support-qr" src={`${process.env.PUBLIC_URL}/images/support-paytm-qr.jpg`} alt="Paytm UPI donation QR code" />
+                <span>Paytm / UPI</span>
+                <a className="support-download" href={`${process.env.PUBLIC_URL}/images/support-paytm-qr.jpg`} download="deluxe-playlist-paytm-upi-qr.jpg">Download QR</a>
+              </div>
+            </div>
+            <p className="support-name">MD ARIF AHMAD · Thank you for your support</p>
           </div>
         </div>
       )}

@@ -283,12 +283,16 @@ body {
 }
 .support-btn:hover { background: rgba(200,116,26,.42); transform: translateY(-1px); }
 .support-modal-overlay { position: fixed; inset: 0; z-index: 120; display: flex; align-items: center; justify-content: center; padding: 18px; background: rgba(4,2,8,.78); backdrop-filter: blur(12px); }
-.support-modal-card { position: relative; width: min(360px, 92vw); padding: 22px 20px 18px; border: 1px solid rgba(255,214,128,.38); border-radius: 22px; background: linear-gradient(145deg, rgba(40,24,8,.98), rgba(16,9,20,.98)); box-shadow: 0 18px 60px rgba(0,0,0,.65); text-align: center; }
+.support-modal-card { position: relative; width: min(680px, 94vw); padding: 22px 20px 18px; border: 1px solid rgba(255,214,128,.38); border-radius: 22px; background: linear-gradient(145deg, rgba(40,24,8,.98), rgba(16,9,20,.98)); box-shadow: 0 18px 60px rgba(0,0,0,.65); text-align: center; }
 .support-modal-header { display: flex; align-items: center; justify-content: center; gap: 8px; color: #ffe09a; }
 .support-modal-header span { font-size: 1.5rem; }
 .support-modal-header h3 { font: 800 1.15rem 'Baloo 2', sans-serif; margin: 0; }
 .support-copy { margin: 7px auto 13px; color: rgba(255,255,255,.68); font-size: .74rem; line-height: 1.35; }
-.support-qr { display: block; width: min(270px, 78vw); aspect-ratio: 1; object-fit: contain; margin: 0 auto; border-radius: 10px; background: #090909; }
+.support-qr-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.support-qr-item { display: flex; flex-direction: column; align-items: center; gap: 6px; color: #ffe7b0; font: 700 .68rem 'Baloo 2', sans-serif; }
+.support-qr { display: block; width: min(260px, 38vw); aspect-ratio: 1; object-fit: contain; margin: 0 auto; border-radius: 10px; background: #090909; }
+.support-download { display: inline-flex; padding: 4px 9px; border-radius: 999px; border: 1px solid rgba(255,214,128,.42); color: #ffe2a0; text-decoration: none; font: 700 .58rem 'Baloo 2', sans-serif; }
+.support-download:hover { background: rgba(200,116,26,.32); }
 .support-name { margin: 11px 0 0; color: #fff0c6; font: 700 .68rem 'Baloo 2', sans-serif; letter-spacing: .7px; }
 .theme-salon .support-btn { border-color: rgba(255,184,210,.55); background: rgba(81,12,48,.62); color: #ffe6ef; }
 .theme-salon .support-modal-card { border-color: rgba(255,184,210,.4); background: linear-gradient(145deg, rgba(57,8,35,.98), rgba(19,3,14,.98)); }
@@ -1128,6 +1132,11 @@ body {
   .app.theme-bus .hero-center { transform: translateY(-12px); }
   .time-support-row { gap: 5px; }
   .support-btn { padding: 3px 6px; font-size: .49rem; }
+  .support-modal-card { padding: 20px 12px 14px; }
+  .support-qr-grid { gap: 7px; }
+  .support-qr-item { font-size: .58rem; }
+  .support-qr { width: min(44vw, 190px); border-radius: 7px; }
+  .support-download { padding: 3px 6px; font-size: .50rem; }
   .shayri-board { width: calc(100vw - 46px); padding: 3px 7px; gap: 4px; }
   .shayri-deco { font-size: .9rem; }
   .shayri-hi { font-size: .62rem; }
