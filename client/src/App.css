@@ -268,6 +268,18 @@ body {
 /* Lift the Bus title stack without moving Salon or Deluxe Auto content. */
 .app.theme-bus .hero-center { transform: translateY(-24px); }
 
+/* Keep the shayri board compact so it never competes with the music player. */
+.shayri-board {
+  max-width: 400px;
+  width: calc(100vw - 56px);
+  padding: 4px 9px 4px 8px;
+  gap: 5px;
+}
+.shayri-deco { font-size: 1rem; }
+.shayri-hi { font-size: clamp(.68rem, 1.7vw, .80rem); line-height: 1.2; }
+.shayri-en { font-size: clamp(.52rem, 1.2vw, .60rem); }
+.shayri-refresh { width: 22px; height: 22px; font-size: .68rem; }
+
 /* Right side buttons group */
 .bus-right-btns {
   display: flex;
@@ -1087,6 +1099,10 @@ body {
 
 @media (max-width: 600px) {
   .app.theme-bus .hero-center { transform: translateY(-12px); }
+  .shayri-board { width: calc(100vw - 46px); padding: 3px 7px; gap: 4px; }
+  .shayri-deco { font-size: .9rem; }
+  .shayri-hi { font-size: .62rem; }
+  .shayri-en { font-size: .49rem; }
   .scene-bg-img {
     inset: auto;
     top: 55%;
