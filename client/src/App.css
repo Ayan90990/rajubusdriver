@@ -2002,8 +2002,9 @@ body {
 .auto-horn-badge {
   position: absolute;
   z-index: 8;
-  right: 4%;
-  bottom: 34%;
+  right: 24px;
+  top: 150px;
+  bottom: auto;
   display: flex;
   align-items: center;
   gap: 7px;
@@ -2328,7 +2329,7 @@ body {
   .theme-taxi .sky-background::before { animation-duration: 18s; }
   .theme-taxi .sky-background::after { animation-duration: 14s; }
   .deluxe-auto-vehicle { width: min(72vw, 320px); bottom: 19%; animation-duration: 1.05s; }
-  .auto-horn-badge { right: 3%; bottom: 35%; padding: 5px 8px; }
+  .auto-horn-badge { right: 8px; top: 128px; bottom: auto; padding: 5px 8px; }
   .auto-horn-badge .horn-eng { font-size: .50rem; letter-spacing: .6px; }
 }
 
